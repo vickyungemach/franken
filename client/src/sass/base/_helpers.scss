@@ -1,0 +1,24 @@
+// Center all ionicons
+span.sc-bczRLJ {
+    display: flex;
+} 
+
+.hidden {
+    display: none;
+}
+
+.pos-relative {
+    position: relative;
+}
+
+.hide-desktop {
+    display: none;
+}
+
+
+
+@media only screen and (max-width : $mobile) { 
+    .hide-mobile {
+        display: none !important;
+    }
+}

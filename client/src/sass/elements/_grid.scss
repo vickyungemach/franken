@@ -1,0 +1,49 @@
+.grid {
+    &__header {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #dbdbdb;
+
+        &-tab {
+            position: relative;
+            top: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            padding-bottom: 12px;
+            padding-right: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            color: #dbdbdb;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: all .2s ease-out;
+
+            span {
+                margin-right: 5px;
+
+                svg {
+                    fill: #dbdbdb;
+                }
+            }
+
+            &--active {
+                border-bottom: 1px solid black;
+                color: $dark;
+
+                span {    
+                    svg {
+                        fill: $dark;
+                    }
+                }
+            }
+        }
+
+        &-dots {
+            margin-left: auto;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+    }
+}
