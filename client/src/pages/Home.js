@@ -9,7 +9,10 @@ import HomeHeader from 'components/home/HomeHeader';
 const Home = ({}) => {
     
     return (
-        <div>Home</div>
+        <Container>
+            <HomeHeader />
+        </Container>
+
     )
 }
 
