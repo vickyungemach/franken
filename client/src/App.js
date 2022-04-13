@@ -9,27 +9,27 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 import PrivateRoute from './components/elements/PrivateRoute';
-import { getUser, loginCheck, logout } from 'actions/auth'; 
+import { getUser, loginCheck, logout } from 'actions/auth';
 import { store } from './store';
 
 
 
 function App({ isAuthenticated, token }) {
-  
+
   useEffect(() => {
-      store.dispatch(getUser());
-      store.dispatch(loginCheck());
+    store.dispatch(getUser());
+    store.dispatch(loginCheck());
   }, [token])
 
 
 
   return (
-      <Router>
-   
-          <Switch>
-            <PrivateRoute exact path='/' component={Home} />
-          </Switch>
-      </Router>
+    <Router>
+      <Navbar authenticated={isAuthenticated} username="username" logout={() => store.dispatch(logout())} />
+      <Switch>
+        <PrivateRoute exact path='/' component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
