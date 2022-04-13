@@ -28,6 +28,8 @@ function App({ isAuthenticated, token }) {
       <Navbar authenticated={isAuthenticated} username="username" logout={() => store.dispatch(logout())} />
       <Switch>
         <PrivateRoute exact path='/' component={Home} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/register' component={Register} />
       </Switch>
     </Router>
   );
