@@ -10,7 +10,7 @@
 
 .content {
     margin: 0 auto;
-    max-width: 85rem;
+    max-width: 90rem;
 }
 
 // 100% fit in padded container
@@ -97,13 +97,12 @@
 }
 
 @media only screen and (max-width : $breakpoint-md) {
-    .main {
+    .container {
         margin: 0rem auto;
-        padding: 35px;
+        padding-top: 0;
     }
 
-
-    .sidebar, .content {
+    .sidebar {
         display: none;
     }
 }

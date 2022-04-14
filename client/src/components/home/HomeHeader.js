@@ -13,21 +13,25 @@ const GridHeader = ({ }) => {
     return (
         <div className='grid__header'>
 
-            {
-                tabs.map((tab, i) => (
-                    <div 
-                        className={`grid__header-tab ${i === active ? 'grid__header-tab--active' : ''}`} 
-                        onClick={() => setActive(i)}
-                    >
-                        { tab.icon }
-                         <p>{ tab.name }</p>
-                </div>
-                ))
-            }
+            <h1 className='grid__header-title hide-desktop'>All Photos</h1>
 
-            <EllipsisHorizontal className="grid__header-dots" color="#dbdbdb" />
+            <div className='grid__header-tabs'>
+                {
+                    tabs.map((tab, i) => (
+                        <div
+                            className={`${i === active ? 'active' : ''}`}
+                            onClick={() => setActive(i)}
+                        >
+                            {tab.icon}
+                            <p>{tab.name}</p>
+                        </div>
+                    ))
+                }
+
+                <EllipsisHorizontal className="grid__header-dots" color="#dbdbdb" />
+            </div>
         </div>
     )
 }
 
-export default GridHeader ;
+export default GridHeader;
