@@ -1,4 +1,8 @@
 .grid {
+
+    /* ===================================
+       Grid Header
+    ==================================== */
     &__header {
         border-bottom: 1px solid #dbdbdb;
 
@@ -10,12 +14,13 @@
             letter-spacing: .8px;
         }
 
-        // Header Tabs
+        // Header tab bar
         &-tabs {
             display: flex;
             align-items: center;
 
-            &>div {
+            // Header tabs
+            & > div {
                 position: relative;
                 top: 1px;
                 display: flex;
@@ -39,6 +44,7 @@
                     }
                 }
 
+                // Active tab
                 &.active {
                     border-bottom: 1px solid black;
                     color: $dark;
@@ -60,12 +66,17 @@
         }
     }
 
+
+    /* ===================================
+       Grid body
+    ==================================== */
     &__body {
         margin: 2rem auto;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         grid-gap: 15px;
 
+        // Grid image
         &-item {
             overflow: hidden;
             height: 0;
@@ -78,6 +89,10 @@
         }
     }
 
+
+    /* ===================================
+       Empty grid
+    ==================================== */
     &__empty {
         width: 100%;
         height: 50vh;
@@ -85,6 +100,79 @@
         align-items: center;
         justify-content: center;
     }
+
+
+    /* ===================================
+       Grid modal
+    ==================================== */
+    &__modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1000;
+        background-color: rgba(0, 0, 0, .99);
+        transition: opacity .4s ease-in-out;
+
+        &-carousel {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        &-slide {
+            height: 100%;
+            width: 100%;
+            flex-shrink: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-position: center;
+            background-size: cover;
+            backface-visibility: hidden;
+
+            img {
+                object-fit: cover;
+                backface-visibility: hidden;
+                z-index: 100;
+            }
+        }
+
+        // Navigation arrows
+        &-btn {
+            position: absolute;
+            top: 45%;
+            font-size: 2.5rem;
+            z-index: 2;
+            color: #fff;
+
+            &--left {
+                left: 5rem;
+            }
+
+            &--right {
+                right: 5rem;
+            }
+
+            &--close {
+                top: 4rem;
+                right: 5rem;
+                font-size: 2rem;
+            }
+        }
+    }
+
+
+}
+
+// Disable body scrolling
+.no-scroll {
+    overflow: hidden;
 }
 
 @media only screen and (max-width: $breakpoint-sm) {
@@ -97,7 +185,7 @@
             &-tabs {
                 margin-top: 2.5rem;
 
-                & > div {
+                &>div {
                     margin-right: 15px;
 
                     p {
@@ -110,8 +198,6 @@
                 }
             }
 
-
-
             &-dots {
                 margin-right: 0;
             }
@@ -122,5 +208,24 @@
             grid-gap: 1px;
             grid-template-columns: 1fr 1fr 1fr;
         }
+
+        &__modal {
+
+            &-btn--left {
+                left: 2.5rem;
+                top: 48%
+            }
+
+            &-btn--right {
+                right: 2.5rem;
+                top: 48%
+            }
+        }
     }
 }
+
+
+
+
+
+
