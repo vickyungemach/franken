@@ -1,10 +1,9 @@
 import React from 'react';
 
-const GridItem = ({ }) => {
+const GridItem = ({ image, i }) => {
 
     return (
-        <div>
-            
+        <div key={i} className="grid__body-item" style={{ backgroundImage: `url(${image})` }}>
         </div>
     )
 }

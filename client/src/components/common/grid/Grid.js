@@ -1,4 +1,6 @@
 import React from 'react';
+import GridItem from './GridItem';
+import GridEmpty from './GridEmpty';
 
 const Grid = ({ }) => {
 
@@ -40,17 +42,20 @@ const Grid = ({ }) => {
         "https://images.unsplash.com/photo-1595591329639-ed0d8bc49446?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHBhcmlzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
     ]
 
-    return (
-        <div className='grid__body'>
 
+    const imageGrid = (
+        <div className='grid__body'>
             {
                 images.map((image, i) => (
-                    <div key={i} className="grid__body-item" style={{ backgroundImage: `url(${image})` }}>
-                    </div>
+                    <GridItem image={image} i={i} />
                 ))
             }
         </div>
     )
+
+    return (
+        images.length === 0 ? <GridEmpty /> : imageGrid
+    )
 }
 
-export default Grid ;
+export default Grid;
