@@ -80,7 +80,7 @@ const GridModal = ({ images, currentImageIndex, closeGridModal }) => {
                         id={i}
                     >
                         {/* Slide Image */}
-                        <img src={image.url} alt="" style={getImageStyle(image.orientation)} />
+                        <img src={`https://minite-bucket.s3.us-west-1.amazonaws.com/${image.url}`} alt="" style={getImageStyle(image.orientation)} />
                     </div>
                 ))}
             </div>

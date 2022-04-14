@@ -14,6 +14,11 @@ const ImageSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Bookmark',
         default: null
+    },
+    orientation: {
+        type: String,
+        enum: ['portrait', 'landscape', 'even']
+        default: 'portrait'
     }
 });
 
