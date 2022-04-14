@@ -11,5 +11,8 @@ export const GET_USER = 'GET_USER';
 export const SET_ERROR = 'SET_ERROR';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 
+// Images
+export const GET_IMAGES = 'GET_IMAGES';
+
 
 
