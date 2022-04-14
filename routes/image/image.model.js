@@ -17,7 +17,7 @@ const ImageSchema = new mongoose.Schema({
     },
     orientation: {
         type: String,
-        enum: ['portrait', 'landscape', 'even']
+        enum: ['portrait', 'landscape', 'even'],
         default: 'portrait'
     }
 });
