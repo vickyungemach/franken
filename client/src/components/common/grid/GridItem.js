@@ -1,9 +1,15 @@
 import React from 'react';
 
-const GridItem = ({ image, i }) => {
+const GridItem = ({ openGridModal, image, i }) => {
 
     return (
-        <div key={i} className="grid__body-item" style={{ backgroundImage: `url(${image})` }}>
+        <div 
+            key={i} 
+            onClick={() => openGridModal(image, i)} 
+            className="grid__body-item" 
+            style={{ backgroundImage: `url(${image})`}}
+        >
+        
         </div>
     )
 }
