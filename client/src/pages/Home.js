@@ -14,7 +14,7 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
     useEffect(() => {
         getBookmarks(); 
         !loadingBookmarks && getImages(bookmarks[0]._id)
-    }, [loadingBookmarks])
+    }, [loadingBookmarks]) /* eslint-disable-line */
 
     const setActive = (index) => {
         clearImages();

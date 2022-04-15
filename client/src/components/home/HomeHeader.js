@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Camera, Airplane, School, EllipsisHorizontal } from 'react-ionicons'
 
 const GridHeader = ({ bookmarks, active, setActive }) => {
@@ -21,6 +21,7 @@ const GridHeader = ({ bookmarks, active, setActive }) => {
                 {
                     bookmarks.map((bookmark, i) => (
                         <div
+                            key={i}
                             className={`${i === active ? 'active' : ''}`}
                             onClick={() => setActive(i)}
                         >

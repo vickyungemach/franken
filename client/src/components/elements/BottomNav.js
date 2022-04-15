@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
+import { Home, Grid, Pricetag, Add } from 'react-ionicons'
 
 /* Props
 ============================================================= */
 // navLinks: [icon: String, text: String]
 
-const BottomNav = ({ }) => {
+const BottomNav = () => {
 
     const navLinks = [
         { icon: <Home height="1.8rem" />, text: 'Photos' },
@@ -26,7 +26,7 @@ const BottomNav = ({ }) => {
 
             {
                 navLinks.map((link, i) => (
-                    <a 
+                    <button 
                         key={i} 
                         href="" 
                         className={`bottom-nav-link ${active === i ? 'bottom-nav-link--active' : ''}`} 
@@ -34,7 +34,7 @@ const BottomNav = ({ }) => {
                     >
                         { link.icon }
                         <span className="bottom-nav-text">{ link.text }</span>
-                    </a>
+                    </button>
                 ))
             }
 

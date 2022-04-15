@@ -40,6 +40,6 @@ export const Dropdown = ( { title, children, hideOnMobile }) => {
    DropdownItem
 =================================== */
 export const DropdownItem = ({ children, onClick }) => {
-    return <li><a className="dropdown-item" href="#" onClick={onClick}>{ children }</a></li> 
+    return <li><button className="dropdown-item" href="#" onClick={onClick}>{ children }</button></li> 
 }
 

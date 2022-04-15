@@ -1,9 +1,9 @@
 import React from 'react';
 
-const GridEmpty = ({ }) => {
+const GridEmpty = () => {
 
     return (
-        <div className="grid__empty">
+        <div classame="grid__empty">
             There's no images here yet.
         </div>
     )

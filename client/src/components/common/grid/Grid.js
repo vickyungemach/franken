@@ -63,6 +63,7 @@ const Grid = ({ images }) => {
                 {   // Image grid
                     images.map((image, i) => (
                         <GridItem 
+                            key={image._id}
                             openGridModal={openGridModal} 
                             image={`https://minite-bucket.s3.us-west-1.amazonaws.com/${image.url}`}
                             i={i} 

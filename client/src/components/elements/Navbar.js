@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Drawer from '../elements/Drawer';
 import Searchbar from './Searchbar';
 import logoPng from '../../assets/logo.png'
 import { Dropdown, DropdownItem } from 'components/elements/Dropdown';
@@ -19,7 +18,7 @@ function Navbar({ authenticated, username, logout }) {
     const logo = (
         <Link to="/">
             <div className='header__logo'>
-                <img src={logoPng} />
+                <img src={logoPng} alt="logo" />
                 <h1>Minite</h1>
             </div>
         </Link>
