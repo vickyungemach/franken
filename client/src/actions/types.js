@@ -15,4 +15,8 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const GET_IMAGES = 'GET_IMAGES';
 
 
+// Bookmarks
+export const GET_BOOKMARKS = 'GET_BOOKMARKS';
+
+
 
