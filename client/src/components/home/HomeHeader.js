@@ -1,8 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Camera, Airplane, School, EllipsisHorizontal } from 'react-ionicons';
-import { Dropdown, DropdownItem } from 'components/elements/Dropdown';
+import { Dropdown, DropdownItem, DropdownButton } from 'components/elements/Dropdown';
 
-const GridHeader = ({ bookmarks, active, setActive }) => {
+const GridHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
+    const [dropdown, setDropdown] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = document.addEventListener('click', (e) => {
+            if(e.target.tagName !== 'svg') {
+                setDropdown(false);
+            }
+        })
+
+        return unsubscribe;
+    }, [])
+
+    const toggleDropdown = (e) => {
+        setDropdown(!dropdown);
+    }
 
     const iconSize = "17px";
 
@@ -32,10 +47,16 @@ const GridHeader = ({ bookmarks, active, setActive }) => {
                     ))
                 }
 
-                <Dropdown title="Profile" hideOnMobile >
-                    <DropdownItem>Log out</DropdownItem>
+                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} setDropdown={setDropdown} hideOnMobile >
+                    <DropdownButton>
+                        <button onClick={toggleDropdown}>
+                            <EllipsisHorizontal color="#dbdbdb" />
+                        </button>
+                        
+                    </DropdownButton>
+                    <DropdownItem onClick={openManageBookmarks}>Manage Bookmarks</DropdownItem>
                 </Dropdown>
-                <EllipsisHorizontal className="grid__header-dots" color="#dbdbdb" />
+
             </div>
         </div>
     )

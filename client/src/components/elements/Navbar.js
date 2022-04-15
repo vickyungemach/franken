@@ -47,9 +47,9 @@ function Navbar({ authenticated, username, logout }) {
 
             <Searchbar hideOnMobile />
 
-            <Dropdown dropdown={dropdown} setDropdown={setDropdown}>
+            <Dropdown dropdown={dropdown} setDropdown={setDropdown} hideOnMobile >
                 <DropdownButton>
-                    <button className="btn btn-primary btn-dropdown hide-mobile" onClick={toggleDropdown}>
+                    <button className="btn btn-primary btn-dropdown" onClick={toggleDropdown}>
                         Profile
                         <i className="fas fa-chevron-down" />
                     </button>
