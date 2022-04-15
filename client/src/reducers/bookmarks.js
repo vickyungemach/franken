@@ -1,16 +1,18 @@
 import {
-    GET_BOOKMARKS
+    GET_BOOKMARKS,
+    SET_ACTIVE_BOOKMARK
 } from '../actions/types';
 
 const initialState = {
-    loading: true, 
-    bookmarks: []
+    loading: true,
+    bookmarks: [],
+    activeBookmark: 0
 }
 
-export default function bookmarksReducer (state = initialState, action) {
+export default function bookmarksReducer(state = initialState, action) {
     const { type, payload } = action;
 
-    switch(type) {
+    switch (type) {
 
         case GET_BOOKMARKS:
             return {
@@ -19,7 +21,13 @@ export default function bookmarksReducer (state = initialState, action) {
                 bookmarks: payload
             }
 
-        default: 
+        case SET_ACTIVE_BOOKMARK:
+            return {
+                ...state,
+                activeBookmark: payload
+            }
+
+        default:
             return {
                 ...state
             }

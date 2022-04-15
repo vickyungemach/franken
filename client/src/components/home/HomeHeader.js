@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Camera, Airplane, School, EllipsisHorizontal } from 'react-ionicons'
 
-const GridHeader = ({ }) => {
-    const [active, setActive] = useState(0);
+const GridHeader = ({ bookmarks, active, setActive }) => {
 
-    const tabs = [
-        { name: 'All Photos', icon: <Camera height="17px" /> },
-        { name: 'Travel', icon: <Airplane height="17px" /> },
-        { name: 'School', icon: <School height="17px" /> }
-    ]
+    const iconSize = "17px";
+
+    const icons = {
+        camera: <Camera height={iconSize} />,
+        airplane: <Airplane height={iconSize} />,
+        school: <School height={iconSize} />
+    }
+
 
     return (
         <div className='grid__header'>
@@ -17,13 +19,13 @@ const GridHeader = ({ }) => {
 
             <div className='grid__header-tabs'>
                 {
-                    tabs.map((tab, i) => (
+                    bookmarks.map((bookmark, i) => (
                         <div
                             className={`${i === active ? 'active' : ''}`}
                             onClick={() => setActive(i)}
                         >
-                            {tab.icon}
-                            <p>{tab.name}</p>
+                            { icons[bookmark.icon] }
+                            <p>{bookmark.name}</p>
                         </div>
                     ))
                 }

@@ -1,5 +1,6 @@
 import {
-    GET_BOOKMARKS
+    GET_BOOKMARKS,
+    SET_ACTIVE_BOOKMARK
 } from './types';
 
 import api from '../utils/api';
@@ -15,6 +16,21 @@ export const getBookmarks = () => async dispatch => {
         dispatch({
             type: GET_BOOKMARKS,
             payload: res.data
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+
+/* ===================================
+   Set Active Bookmark
+=================================== */
+export const setActiveBookmark = (index) => async dispatch => {
+    try {
+        dispatch({
+            type: SET_ACTIVE_BOOKMARK,
+            payload: index
         })
     } catch (err) {
         console.log(err)
