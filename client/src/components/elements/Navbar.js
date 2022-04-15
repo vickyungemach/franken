@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Searchbar from './Searchbar';
 import logoPng from '../../assets/logo.png'
-import { Dropdown, DropdownItem } from 'components/elements/Dropdown';
+import { Dropdown, DropdownItem, DropdownButton } from 'components/elements/Dropdown';
 
 
 function Navbar({ authenticated, username, logout }) {
 
     const [currentURL, setCurrentURL] = useState('register');
+    const [dropdown, setDropdown] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = document.addEventListener('click', (e) => {
+            if(!e.target.classList.contains("fas")) {
+                setDropdown(false);
+            }
+        })
+
+        return unsubscribe;
+    }, [])
+
+    const toggleDropdown = () => {
+        setDropdown(!dropdown);
+    }
 
     // Toggle between Sign in and sign up
     function changeURL() {
@@ -28,11 +43,18 @@ function Navbar({ authenticated, username, logout }) {
     const loggedInNav = (
         <div className="nav nav--login">
 
-            { logo }
+            {logo}
 
             <Searchbar hideOnMobile />
 
-            <Dropdown title="Profile" hideOnMobile >
+            <Dropdown dropdown={dropdown} setDropdown={setDropdown}>
+                <DropdownButton>
+                    <button className="btn btn-primary btn-dropdown hide-mobile" onClick={toggleDropdown}>
+                        Profile
+                        <i className="fas fa-chevron-down" />
+                    </button>
+                </DropdownButton>
+
                 <DropdownItem onClick={logout}>Log out</DropdownItem>
             </Dropdown>
         </div>
@@ -41,8 +63,8 @@ function Navbar({ authenticated, username, logout }) {
     // Logged out navbar
     const loggedOutNav = (
         <div className="nav nav--logout">
-            { logo }
-            
+            {logo}
+
             {
                 currentURL.includes('login') ?
                     <Link to="login" className="nav__link" onClick={changeURL} >Sign in <i className="fas fa-sign-in-alt"> </i></Link> :
@@ -57,7 +79,7 @@ function Navbar({ authenticated, username, logout }) {
         <div className='header'>
 
             {/* Desktop Menu */}
-            {authenticated ? loggedInNav :loggedOutNav }
+            {authenticated ? loggedInNav : loggedOutNav}
 
 
         </div>

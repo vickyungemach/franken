@@ -1,5 +1,6 @@
-import React from 'react';
-import { Camera, Airplane, School, EllipsisHorizontal } from 'react-ionicons'
+import React, { useState } from 'react';
+import { Camera, Airplane, School, EllipsisHorizontal } from 'react-ionicons';
+import { Dropdown, DropdownItem } from 'components/elements/Dropdown';
 
 const GridHeader = ({ bookmarks, active, setActive }) => {
 
@@ -25,12 +26,15 @@ const GridHeader = ({ bookmarks, active, setActive }) => {
                             className={`${i === active ? 'active' : ''}`}
                             onClick={() => setActive(i)}
                         >
-                            { icons[bookmark.icon] }
+                            {icons[bookmark.icon]}
                             <p>{bookmark.name}</p>
                         </div>
                     ))
                 }
 
+                <Dropdown title="Profile" hideOnMobile >
+                    <DropdownItem>Log out</DropdownItem>
+                </Dropdown>
                 <EllipsisHorizontal className="grid__header-dots" color="#dbdbdb" />
             </div>
         </div>

@@ -3,37 +3,33 @@ import React, { useState, useEffect } from 'react';
 /* ===================================
    Dropdown
 =================================== */
-export const Dropdown = ( { title, children, hideOnMobile }) => {
+export const Dropdown = ( { children, hideOnMobile, dropdown, setDropdown }) => {
 
-    const [dropdown, setDropdown] = useState(false);
-
-    useEffect(() => {
-        const unsubscribe = document.addEventListener('click', (e) => {
-            if(!e.target.classList.contains("fas")) {
-                setDropdown(false);
-            }
-        })
-
-        return unsubscribe;
-    }, [])
-
-    const toggleDropdown = () => {
-        setDropdown(!dropdown);
-    }
+    // Get the button and items from children
+    const rchildren = React.Children.toArray(children);
+    const dropdownButton = rchildren[0];
+    const dropdownItems = rchildren.filter((child, i) => i !== 0);
 
     return (
         <div className={`dropdown ${hideOnMobile ? 'hide-mobile' : ''}`}>
-            <button className="btn btn-primary btn-dropdown" onClick={toggleDropdown}>
-                { title }
-                <i className="fas fa-chevron-down" />
-            </button>
+
+            { dropdownButton }
+            
             <ul className={`dropdown-menu ${dropdown ? 'show' : ''}`}>
 
-                { children }
+                { dropdownItems }
 
             </ul>
         </div>
     )
+}
+
+
+/* ===================================
+   DropdownButton
+=================================== */
+export const DropdownButton = ({ children }) => {
+    return children; 
 }
 
 /* ===================================

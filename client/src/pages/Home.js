@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { connect } from 'react-redux';
 import { getImages, clearImages } from 'actions/images';
 import { getBookmarks, setActiveBookmark } from 'actions/bookmarks';
+
 import Container from 'components/layout/Container';
 import HomeHeader from 'components/home/HomeHeader';
 import Grid from 'components/common/grid/Grid';
 import Spinner from 'components/elements/Spinner';
+import Modal from 'components/elements/Modal';
 
 
 
 const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark }) => {
+
+    const [manageBookmarks, setManageBookmarks] = useState(false);
 
     useEffect(() => {
         getBookmarks(); 
@@ -24,8 +29,11 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
 
     return (
         <Container>
-            <HomeHeader active={activeBookmark} setActive={setActive} bookmarks={bookmarks} />
+            <HomeHeader
+                openManageBookmarks={() => setManageBookmarks(true)} active={activeBookmark} setActive={setActive} bookmarks={bookmarks} />
             { loadingImages ? <Spinner /> : <Grid images={images} /> }
+
+            <Modal modal={manageBookmarks} setModal={setManageBookmarks} />
         </Container>
 
     )

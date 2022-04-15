@@ -3,7 +3,7 @@ import React from 'react';
 const GridEmpty = () => {
 
     return (
-        <div classame="grid__empty">
+        <div className="grid__empty">
             There's no images here yet.
         </div>
     )
