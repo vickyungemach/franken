@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getImages } from 'actions/images';
+import { getImages, clearImages } from 'actions/images';
 import { getBookmarks, setActiveBookmark } from 'actions/bookmarks';
 import Container from 'components/layout/Container';
 import HomeHeader from 'components/home/HomeHeader';
@@ -9,7 +9,7 @@ import Spinner from 'components/elements/Spinner';
 
 
 
-const Home = ({ getImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark }) => {
+const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark }) => {
 
     useEffect(() => {
         getBookmarks(); 
@@ -17,6 +17,7 @@ const Home = ({ getImages, getBookmarks, images, bookmarks, loadingImages, loadi
     }, [loadingBookmarks])
 
     const setActive = (index) => {
+        clearImages();
         setActiveBookmark(index);
         getImages(bookmarks[index]._id);
     }
@@ -38,4 +39,4 @@ const mapStateToProps = state => ({
     activeBookmark: state.bookmarks.activeBookmark
 })
 
-export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark })(Home);
+export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark, clearImages })(Home);

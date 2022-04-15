@@ -13,10 +13,13 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 
 // Images
 export const GET_IMAGES = 'GET_IMAGES';
+export const CLEAR_IMAGES = 'CLEAR_IMAGES';
 
 
 // Bookmarks
 export const GET_BOOKMARKS = 'GET_BOOKMARKS';
 export const SET_ACTIVE_BOOKMARK = 'SET_ACTIVE_BOOKMARK';
+
+
 
 

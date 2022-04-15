@@ -24,7 +24,7 @@ export const getBookmarks = () => async dispatch => {
 
 
 /* ===================================
-   Set Active Bookmark
+   Set active bookmark
 =================================== */
 export const setActiveBookmark = (index) => async dispatch => {
     try {

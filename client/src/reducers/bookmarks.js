@@ -24,6 +24,7 @@ export default function bookmarksReducer(state = initialState, action) {
         case SET_ACTIVE_BOOKMARK:
             return {
                 ...state,
+
                 activeBookmark: payload
             }
 
