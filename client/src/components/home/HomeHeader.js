@@ -47,7 +47,7 @@ const GridHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
                     ))
                 }
 
-                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} setDropdown={setDropdown} hideOnMobile >
+                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} setDropdown={setDropdown} >
                     <DropdownButton>
                         <button onClick={toggleDropdown}>
                             <EllipsisHorizontal color="#dbdbdb" />

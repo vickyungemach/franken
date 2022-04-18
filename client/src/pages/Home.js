@@ -9,6 +9,7 @@ import HomeHeader from 'components/home/HomeHeader';
 import Grid from 'components/common/grid/Grid';
 import Spinner from 'components/elements/Spinner';
 import Modal from 'components/elements/Modal';
+import ManageBookmarks from 'components/bookmarks/ManageBookmarks';
 
 
 
@@ -33,7 +34,14 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
                 openManageBookmarks={() => setManageBookmarks(true)} active={activeBookmark} setActive={setActive} bookmarks={bookmarks} />
             { loadingImages ? <Spinner /> : <Grid images={images} /> }
 
-            <Modal modal={manageBookmarks} setModal={setManageBookmarks} />
+            <Modal 
+                modal={manageBookmarks} 
+                setModal={setManageBookmarks} 
+                title="Manage Bookmarks"
+                width="30%"
+            >
+                <ManageBookmarks />
+            </Modal>
         </Container>
 
     )

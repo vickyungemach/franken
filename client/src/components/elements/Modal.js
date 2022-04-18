@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ modal, setModal}) => {
+const Modal = ({ children, modal, setModal, title, width }) => {
 
     // Open Modal
     const openModal = (e) => {
@@ -22,24 +22,19 @@ const Modal = ({ modal, setModal}) => {
     return (
         <>
             <div className={`modal ${modal ? 'show' : 'fade'}`}  onClick={closeModal}>
-                <div className="modal-content">
+                <div style={{ width: `${width ? width :  '40%'}` }} className="modal__content">
 
                     {/* Header */}
-                    <div className="modal-header">
-                        <p className="modal-title">Title</p>
-                        <span className="modal-close">&times;</span>
+                    <div className="modal__header">
+                        <p className="modal__header-title">{title}</p>
+                        <span className="modal__header-close">&times;</span>
                     </div>
 
                     {/* Body */}
-                    <div className="modal-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, qui.
+                    <div className="modal__body">
+                        { children }
                     </div>
 
-                    {/* Footer */}
-                    <div className="modal-footer">
-                        <button className="btn btn-secondary modal-close" onClick={closeModal}>Close</button>
-                        <button className="btn btn-primary">Save changes</button>
-                    </div>
                 </div>
             </div>
         </>

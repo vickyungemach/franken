@@ -1,0 +1,45 @@
+.bookmarks {
+    padding: 2rem;
+
+    &__title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        h1 {
+            font-size: 2rem;
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 2.5rem;
+
+        // Ionicons icons
+        span:not(.bookmarks__reorder) {
+            margin-left: 15px;
+            margin-right: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                height: 18px;
+            }
+        } 
+
+        &-name {
+            font-family: lato;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+
+@media only screen and (max-width: $breakpoint-sm) {
+    .bookmarks {
+        padding: 1rem;
+    }
+}
