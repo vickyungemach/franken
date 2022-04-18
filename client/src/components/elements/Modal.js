@@ -11,7 +11,7 @@ const Modal = ({ children, modal, setModal, title, width }) => {
     // Close Modal
     const closeModal = (e) => {
         const modalContainer = e.target.classList.contains('modal')
-        const closeModal = e.target.classList.contains('modal-close');
+        const closeModal = e.target.classList.contains('modal__header-close');
 
         if (modalContainer || closeModal) {
             setModal(false)

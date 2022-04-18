@@ -4,7 +4,7 @@
 .regular-btn {
     font-family: inherit;
     border: none;
-    background-color: $primary;
+    background-color: $secondary;
     color: white;
     font-weight: 600;
     padding: 1.4rem 3rem;
@@ -12,7 +12,8 @@
     margin-top: 1.5rem;
     border: 2px solid white;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 15px;
+    text-align: center;
 
     &:active, &:focus {
         outline: none;
