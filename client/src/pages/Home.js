@@ -37,7 +37,7 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
             <Modal 
                 modal={manageBookmarks} 
                 setModal={setManageBookmarks} 
-                title="Manage Bookmarks"
+                title="Bookmarks"
                 width="30%"
             >
                 <ManageBookmarks />

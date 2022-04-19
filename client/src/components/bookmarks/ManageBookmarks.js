@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Add, ReorderTwo, CreateOutline, Camera, Airplane, School, ReorderTwoOutline } from 'react-ionicons';
-import ManageBookmarksItem from './ManageBookmarksItem';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import BookmarkForm from './BookmarkForm';
 
 const ManageBookmarks = ({ }) => {
 
@@ -76,10 +76,11 @@ const ManageBookmarks = ({ }) => {
                 </Droppable>
             </DragDropContext>
 
+            <BookmarkForm />
 
-            <div className='bookmarks__btn regular-btn'>
+            {/* <div className='bookmarks__btn regular-btn'>
                 <p>Save bookmarks</p>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -3,18 +3,21 @@
     display: flex;
     height: 50rem;
     flex-direction: column;
+    flex-wrap: wrap;
 
+    // Manage bookmarks title
     &__title {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 2rem;
-    
+
         h1 {
             font-size: 2rem;
         }
     }
 
+    // Manage bookmarks item
     &__item {
         display: flex;
         align-items: center;
@@ -32,14 +35,107 @@
             svg {
                 height: 18px;
             }
-        } 
+        }
 
+        // Item name
         &-name {
             font-family: lato;
             letter-spacing: 1px;
         }
     }
 
+    // Manage bookmarks form
+    &__form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2.5rem;
+
+        &-input-container {
+            -webkit-box-align: center;
+            -webkit-box-pack: justify;
+            align-items: center;
+            background-color: #FAFBFC;
+            border-color: #DFE1E6;
+            color: #091E42;
+            cursor: text;
+            border-radius: 3px;
+            border-width: 1px;
+            border-style: solid;
+            box-sizing: border-box;
+            display: flex;
+            flex: 1 1 100%;
+            font-size: 14px;
+            justify-content: space-between;
+            max-width: 100%;
+            overflow: hidden;
+            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+            overflow-wrap: break-word;
+            vertical-align: top;
+            pointer-events: auto;
+            margin-left: 2rem;
+            margin-right: .8rem;
+
+            &:hover {
+                background-color: #EBECF0;
+            }
+        }
+
+        &-input {
+            background-color: transparent;
+            border: 0px;
+            box-sizing: border-box;
+            color: inherit;
+            cursor: inherit;
+            font-size: 14px;
+            min-width: 0px;
+            outline: none;
+            width: 100%;
+            line-height: 1.42857;
+            padding: 8px 6px;
+            height: 2.57em;
+        }
+
+        &-icons {
+            width: 90%;
+            margin-top: 2rem;
+            margin-left: 4.5rem;
+            display: flex;
+            flex-wrap: wrap;
+
+            span {
+                margin-bottom: 1.5rem;
+                margin-right: 2.5rem;
+            }
+
+            & > div {
+                cursor: pointer;
+            }
+        }
+
+        &-close {
+            cursor: pointer;
+        }
+
+        &-button {
+            background-color: $secondary;
+            text-align: center;
+            border-color: $secondary;
+            color: #fff;
+            cursor: text;
+            border-radius: 3px;
+            border-width: 1px;
+            border-style: solid;
+            box-sizing: border-box;
+            min-width: 7rem;
+            font-size: 14px;
+            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+            height: 3.8rem;
+        }
+    }
+
+
+    // Manage bookmarks button
     &__btn {
         margin-top: auto;
     }
