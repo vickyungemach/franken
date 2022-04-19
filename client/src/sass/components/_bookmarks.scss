@@ -15,6 +15,10 @@
         h1 {
             font-size: 2rem;
         }
+
+        span { 
+            cursor: pointer;
+        }
     }
 
     // Manage bookmarks item
@@ -42,6 +46,27 @@
             font-family: lato;
             letter-spacing: 1px;
         }
+
+        &-edits {
+            opacity: 0;
+            pointer-events: none;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            transition: 0.1s ease-in-out 0s;
+            cursor: pointer;
+
+            span {
+                margin: 0 !important;
+                margin-left: 10px !important;
+            }
+
+            &.show {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
     }
 
     // Manage bookmarks form
@@ -51,6 +76,7 @@
         justify-content: center;
         margin-top: 2.5rem;
 
+        // Input
         &-input-container {
             -webkit-box-align: center;
             -webkit-box-pack: justify;
@@ -96,8 +122,9 @@
             height: 2.57em;
         }
 
+        // Icon selection
         &-icons {
-            width: 90%;
+            width: 85%;
             margin-top: 2rem;
             margin-left: 4.5rem;
             display: flex;
@@ -113,10 +140,12 @@
             }
         }
 
+        // Close bookmark form
         &-close {
             cursor: pointer;
         }
 
+        // Save bookmark button
         &-button {
             background-color: $secondary;
             text-align: center;
@@ -131,6 +160,25 @@
             font-size: 14px;
             transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
             height: 3.8rem;
+        }
+    }
+
+    // Add bookmark button
+    &__add-btn {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: grey;
+        font-family: 'Lato';
+        font-weight: 500;
+        font-size: 1.5rem;
+        letter-spacing: .8px;
+        width: 19rem;
+        margin-top: 3rem;
+        // background-color:aqua ;
+
+        p {
+            margin-left: 2rem;
         }
     }
 

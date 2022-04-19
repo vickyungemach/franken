@@ -1,5 +1,4 @@
 import { 
-    MapOutline,
     Airplane, 
     Alarm,
     AmericanFootball,
@@ -14,14 +13,13 @@ import {
     Flask,
     Heart,
     Map,
-    Nutrition,
     Paw
 } from 'react-ionicons';
 
 const iconGrey = "gainsboro"
 const iconPrimary = "#05B3D7";
 
-export default [
+const icons = [
     { name: 'airplane', greyIcon: <Airplane color={iconGrey} />, primaryIcon: <Airplane color={iconPrimary} /> },
     { name: 'alarm', greyIcon: <Alarm color={iconGrey} />, primaryIcon: <Alarm color={iconPrimary} /> },
     { name: 'americanfootball', greyIcon: <AmericanFootball color={iconGrey} />, primaryIcon: <AmericanFootball color={iconPrimary} /> },
@@ -38,3 +36,5 @@ export default [
     { name: 'map', greyIcon: <Map color={iconGrey} />, primaryIcon: <Map color={iconPrimary} /> },
     { name: 'paw', greyIcon: <Paw color={iconGrey} />, primaryIcon: <Paw color={iconPrimary} /> }
 ]
+
+export default icons;

@@ -1,12 +1,6 @@
 import React from 'react';
 
-const Modal = ({ children, modal, setModal, title, width }) => {
-
-    // Open Modal
-    const openModal = (e) => {
-        setModal(true);
-        document.querySelector('body').classList.add('no-scroll');
-    }
+const Modal = ({ children, modal, setModal, title, width, reset }) => {
 
     // Close Modal
     const closeModal = (e) => {
@@ -15,6 +9,7 @@ const Modal = ({ children, modal, setModal, title, width }) => {
 
         if (modalContainer || closeModal) {
             setModal(false)
+            reset();
             document.querySelector('body').classList.remove('no-scroll');
         }
     }

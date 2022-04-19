@@ -1,15 +1,26 @@
 import React from 'react';
-import { ReorderFour, Camera } from 'react-ionicons';
+import { ReorderTwoOutline } from 'react-ionicons';
+import EditBookmarkIcons from './EditBookmarkIcons';
 
-const ManageBookmarksItem = ({ name, icon, dragHandleProps }) => {
+const ManageBookmarksItem = ({ showEdits, openEdit, provided, item, index }) => {
 
     return (
-        <div className='bookmarks__item'>
-            <ReorderFour {...dragHandleProps} className="bookmarks__reorder" color="gainsboro" />
-            { icon }
-            <p className="bookmarks__item-name"> {name} </p>
+        <div
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+            className="bookmarks__item"
+        >
+            <div {...provided.dragHandleProps}>
+                <ReorderTwoOutline className="bookmarks__reorder" color="black" />
+            </div>
+
+            {item.icon}
+            <p className="bookmarks__item-name"> {item.name} </p>
+
+            <EditBookmarkIcons onEdit={() => openEdit(index)} showEdits={showEdits} />
+
         </div>
     )
 }
 
-export default ManageBookmarksItem ;
+export default ManageBookmarksItem;

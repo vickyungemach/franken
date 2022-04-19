@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import icons from '../../utils/icons';
 import { Close } from 'react-ionicons'
 
-const BookmarkForm = ({ }) => {
+const BookmarkForm = ({ closeForm, editData, showForm }) => {
 
     const [name, setName] = useState('');
-    const [icon, setIcon] = useState('paw');
+    const [icon, setIcon] = useState('');
+
+    const input = useRef();
+
+    const startEdit = (name, icon) => {
+        setName(name);
+        setIcon(icon);
+    }
+
+    useEffect(() => {
+        if (editData || showForm) input.current.focus();
+        editData && startEdit(editData.name, editData.icon);
+
+    }, [editData, showForm])
 
     return (
         <>
             <div className='bookmarks__form'>
-                <Close className='bookmarks__form-close' />
+                <Close className='bookmarks__form-close' onClick={closeForm} />
                 <div className="bookmarks__form-input-container">
-                    <input 
-                        value={name} 
-                        onChange={(e) => setName(e.target.value)} 
-                        className='bookmarks__form-input' 
-                        type='text' 
-                        placeholder='Bookmark name' 
+                    <input
+                        ref={input}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className='bookmarks__form-input'
+                        type='text'
+                        placeholder='Bookmark name'
                     />
                 </div>
                 <button className="bookmarks__form-button">Save</button>
@@ -26,11 +40,11 @@ const BookmarkForm = ({ }) => {
 
             <div className="bookmarks__form-icons">
                 {
-                    icons.map(item => (
-                        <div onClick={() =>  setIcon(item.name)}>
-                            { icon === item.name ? item.primaryIcon : item.greyIcon }
+                    icons.map((item, i) => (
+                        <div key={i} onClick={() => setIcon(item.name)}>
+                            {icon === item.name ? item.primaryIcon : item.greyIcon}
                         </div>
-                        
+
                     ))
                 }
             </div>

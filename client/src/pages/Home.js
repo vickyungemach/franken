@@ -16,6 +16,15 @@ import ManageBookmarks from 'components/bookmarks/ManageBookmarks';
 const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark }) => {
 
     const [manageBookmarks, setManageBookmarks] = useState(false);
+    const [showForm, setShowForm] = useState(false);
+    const [showEdits, setShowEdits] = useState(false);
+    const [editBookmark, setEditBookmark] = useState(null);
+
+    const resetManageBookmarks = () => {
+        setShowForm(false);
+        setShowEdits(false);
+        setEditBookmark(null);
+    }
 
     useEffect(() => {
         getBookmarks(); 
@@ -37,10 +46,19 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
             <Modal 
                 modal={manageBookmarks} 
                 setModal={setManageBookmarks} 
+                reset={resetManageBookmarks}
                 title="Bookmarks"
                 width="30%"
             >
-                <ManageBookmarks />
+                <ManageBookmarks 
+                    closeBookmarksModal={() => setManageBookmarks(false)} 
+                    showForm={showForm}
+                    setShowForm={setShowForm}
+                    showEdits={showEdits}
+                    setShowEdits={setShowEdits}
+                    editBookmark={editBookmark}
+                    setEditBookmark={setEditBookmark}
+                />
             </Modal>
         </Container>
 
