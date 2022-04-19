@@ -9,6 +9,10 @@ const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm
 
     // Open add bookmark form
     const openForm = () => {
+        if(list.length >= 5) {
+            return alert('Cannot have more than 5 bookmarks');
+        }
+
         setShowForm(true);
         closeEdits();
     }
@@ -33,7 +37,7 @@ const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm
     const list = [
         { name: 'All Photos', icon: <Camera />, sort: 0 },
         { name: 'Travel', icon: <Airplane />, sort: 1 },
-        { name: 'School', icon: <School />, sort: 2 },
+        { name: 'School', icon: <School />, sort: 2 }
     ]
 
     // Update list after drag and dropping

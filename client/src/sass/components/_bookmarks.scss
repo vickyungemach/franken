@@ -1,7 +1,7 @@
 .bookmarks {
     padding: 2rem;
     display: flex;
-    height: 50rem;
+    min-height: 50rem;
     flex-direction: column;
     flex-wrap: wrap;
 
@@ -175,7 +175,7 @@
         letter-spacing: .8px;
         width: 19rem;
         margin-top: 3rem;
-        // background-color:aqua ;
+        margin-bottom: 4rem;
 
         p {
             margin-left: 2rem;
