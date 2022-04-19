@@ -1,45 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 /* ===================================
    Dropdown
 =================================== */
-export const Dropdown = ( { title, children, hideOnMobile }) => {
+export const Dropdown = ( { children, hideOnMobile, dropdown, setDropdown, className, distance }) => {
 
-    const [dropdown, setDropdown] = useState(false);
-
-    useEffect(() => {
-        const unsubscribe = document.addEventListener('click', (e) => {
-            if(!e.target.classList.contains("fas")) {
-                setDropdown(false);
-            }
-        })
-
-        return unsubscribe;
-    }, [])
-
-    const toggleDropdown = () => {
-        setDropdown(!dropdown);
-    }
+    // Get the button and items from children
+    const rchildren = React.Children.toArray(children);
+    const dropdownButton = rchildren[0];
+    const dropdownItems = rchildren.filter((child, i) => i !== 0);
 
     return (
-        <div className={`dropdown ${hideOnMobile ? 'hide-mobile' : ''}`}>
-            <button className="btn btn-primary btn-dropdown" onClick={toggleDropdown}>
-                { title }
-                <i className="fas fa-chevron-down" />
-            </button>
-            <ul className={`dropdown-menu ${dropdown ? 'show' : ''}`}>
+        <div className={`dropdown ${className} ${hideOnMobile ? 'hide-mobile' : ''}`}>
 
-                { children }
+            { dropdownButton }
+            
+            <ul className={`dropdown-menu ${dropdown ? 'show' : ''}`} style={{ top: distance }}>
+
+                { dropdownItems }
 
             </ul>
         </div>
     )
 }
 
+
+/* ===================================
+   DropdownButton
+=================================== */
+export const DropdownButton = ({ children }) => {
+    return children; 
+}
+
 /* ===================================
    DropdownItem
 =================================== */
 export const DropdownItem = ({ children, onClick }) => {
-    return <li><a className="dropdown-item" href="#" onClick={onClick}>{ children }</a></li> 
+    return <li><button className="dropdown-item" href="#" onClick={onClick}>{ children }</button></li> 
+}
+
+Dropdown.defaultProps = {
+    distance: '100%'
 }
 

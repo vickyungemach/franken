@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux'
+import React from 'react';
 
 function Searchbar({ hideOnMobile }) {
-    const [focus, setFocus] = useState(false);
 
     return (
         <div className={`searchbar ${hideOnMobile ? 'hide-mobile' : ''}`}>

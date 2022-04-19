@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
 
-const Sidebar = ({ }) => {
+const Sidebar = () => {
 
     const [active, setActive] = useState(0);
 

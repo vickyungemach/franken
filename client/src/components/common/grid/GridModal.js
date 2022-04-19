@@ -12,7 +12,7 @@ const GridModal = ({ images, currentImageIndex, closeGridModal }) => {
         })
 
         return unsubscribe;
-    }, [])
+    }, []) /* eslint-disable-line */
 
     // Add first and last clones
     const lastImage = images[images.length - 1]

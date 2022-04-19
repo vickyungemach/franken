@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GridEmpty = ({ }) => {
+const GridEmpty = () => {
 
     return (
         <div className="grid__empty">
