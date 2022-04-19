@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { connect } from 'react-redux';
 import { getImages, clearImages } from 'actions/images';
-import { getBookmarks, setActiveBookmark } from 'actions/bookmarks';
+import { getBookmarks, setActiveBookmark, sortBookmarks } from 'actions/bookmarks';
 
 import Container from 'components/layout/Container';
 import HomeHeader from 'components/home/HomeHeader';
@@ -13,7 +13,7 @@ import ManageBookmarks from 'components/bookmarks/ManageBookmarks';
 
 
 
-const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark }) => {
+const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark, sortBookmarks }) => {
 
     const [manageBookmarks, setManageBookmarks] = useState(false);
     const [showForm, setShowForm] = useState(false);
@@ -51,6 +51,7 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
                 width="30%"
             >
                 <ManageBookmarks 
+                    bookmarks={bookmarks}
                     closeBookmarksModal={() => setManageBookmarks(false)} 
                     showForm={showForm}
                     setShowForm={setShowForm}
@@ -58,6 +59,9 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
                     setShowEdits={setShowEdits}
                     editBookmark={editBookmark}
                     setEditBookmark={setEditBookmark}
+                    setActive={setActive}
+                    activeBookmark={activeBookmark}
+                    sortBookmarks={sortBookmarks}
                 />
             </Modal>
         </Container>
@@ -73,4 +77,4 @@ const mapStateToProps = state => ({
     activeBookmark: state.bookmarks.activeBookmark
 })
 
-export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark, clearImages })(Home);
+export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark, clearImages, sortBookmarks })(Home);

@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import icons from '../../utils/icons';
+import { darkIcons, icons } from '../../utils/icons';
 import { Close } from 'react-ionicons'
+import { connect } from 'react-redux'
+import { updateBookmark, saveBookmark } from 'actions/bookmarks'
 
-const BookmarkForm = ({ closeForm, editData, showForm }) => {
+const BookmarkForm = ({ closeForm, editData, showForm, updateBookmark, saveBookmark }) => {
 
     const [name, setName] = useState('');
     const [icon, setIcon] = useState('');
@@ -20,6 +22,33 @@ const BookmarkForm = ({ closeForm, editData, showForm }) => {
 
     }, [editData, showForm])
 
+    const getRandomIcon = () => {
+        const index = Math.floor(Math.random() * darkIcons.length - 1);
+        return darkIcons[index]
+    }
+
+    const addBookmark = () => {
+        let data = { 
+            name,
+            icon: icon || getRandomIcon()
+        }
+ 
+        saveBookmark(data);
+    }
+
+    const editBookmark = () => {
+        updateBookmark(editData._id, { name, icon })
+    }
+
+
+    const onSubmit = () => {
+        if(!name) return console.log('Name is required');
+
+        !editData ? addBookmark() : editBookmark();
+        
+        closeForm();
+    }
+
     return (
         <>
             <div className='bookmarks__form'>
@@ -34,7 +63,7 @@ const BookmarkForm = ({ closeForm, editData, showForm }) => {
                         placeholder='Bookmark name'
                     />
                 </div>
-                <button className="bookmarks__form-button">Save</button>
+                <button onClick={onSubmit} className="bookmarks__form-button">Save</button>
 
             </div>
 
@@ -52,4 +81,10 @@ const BookmarkForm = ({ closeForm, editData, showForm }) => {
     )
 }
 
-export default BookmarkForm;
+
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { updateBookmark, saveBookmark })(BookmarkForm);
+

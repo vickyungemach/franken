@@ -6,7 +6,7 @@ const EditBookmarkIcons = ({ showEdits, onEdit, onDelete }) => {
     return (
         <div className={`bookmarks__item-edits ${showEdits ? 'show' : ''}`}>
             <CreateOutline onClick={onEdit} color={'darkgrey'} />
-            <TrashOutline onDelete={onDelete} color={'#ED4857'}  />
+            <TrashOutline onClick={onDelete} color={'#ED4857'}  />
         </div>
     )
 }

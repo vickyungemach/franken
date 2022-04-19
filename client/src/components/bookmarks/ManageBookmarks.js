@@ -1,15 +1,15 @@
 import React from 'react';
-import { CloseOutline, CreateOutline, Camera, Airplane, School } from 'react-ionicons';
+import { CloseOutline, CreateOutline } from 'react-ionicons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import BookmarkForm from './BookmarkForm';
 import AddBookmarkButton from './AddBookmarkButton';
 import ManageBookmarksItem from './ManageBookmarksItem';
 
-const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm, setShowEdits, editBookmark, setEditBookmark }) => {
+const ManageBookmarks = ({ setActive, activeBookmark, bookmarks, closeBookmarksModal, showForm, showEdits, setShowForm, setShowEdits, editBookmark, setEditBookmark, sortBookmarks }) => {
 
     // Open add bookmark form
     const openForm = () => {
-        if(list.length >= 5) {
+        if(bookmarks.length >= 5) {
             return alert('Cannot have more than 5 bookmarks');
         }
 
@@ -33,28 +33,22 @@ const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm
     const openEdits = () => setShowEdits(true);
     const closeEdits = () => setShowEdits(false);
 
-
-    const list = [
-        { name: 'All Photos', icon: <Camera />, sort: 0 },
-        { name: 'Travel', icon: <Airplane />, sort: 1 },
-        { name: 'School', icon: <School />, sort: 2 }
-    ]
-
-    // Update list after drag and dropping
+    // Update bookmarks after drag and dropping
     const dragEnd = (param) => {
         const sourceIndex = param.source.index;
         const destinationIndex = param.destination?.index;
 
-        if (destinationIndex) {
-            list.splice(destinationIndex, 0, list.splice(sourceIndex, 1)[0]);
+        if (destinationIndex >= 0) {
+            bookmarks.splice(destinationIndex, 0, bookmarks.splice(sourceIndex, 1)[0]);
         }
 
         // Update sort number after d
-        const updatedSort = list.map((item, i) => {
+        const updatedSort = bookmarks.map((item, i) => {
             return { ...item, sort: i }
         });
 
-        return updatedSort;
+        sortBookmarks(updatedSort);
+        setActive(activeBookmark);
     }
 
     return (
@@ -76,7 +70,7 @@ const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm
                         (provided, snapshot) => (
                             <div ref={provided.innerRef} {...provided.droppableProps}>
                                 {
-                                    list.map((item, i) => (
+                                    bookmarks.map((item, i) => (
 
                                         // Draggable bookmark item
                                         <Draggable key={i} draggableId={`draggable-${i}`} index={i}>
@@ -89,6 +83,7 @@ const ManageBookmarks = ({ closeBookmarksModal, showForm, showEdits, setShowForm
                                                             provided={provided}
                                                             openEdit={openEdit}
                                                             index={i}
+                                                            setActive={setActive}
                                                         />
                                                     )
                                                 }
