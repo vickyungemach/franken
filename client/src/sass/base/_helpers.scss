@@ -15,6 +15,12 @@ span.sc-bczRLJ {
     display: none;
 }
 
+.flex {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
 
 
 @media only screen and (max-width : $mobile) { 

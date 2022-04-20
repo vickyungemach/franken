@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
 
@@ -17,14 +18,18 @@ const Sidebar = () => {
 
     return (
         <ul className='sidebar'>
-            <li className={getClasses(0)} onClick={() => onClick(0)}>
-                {active === 0 ? <Home height="17px" /> : <HomeOutline height="17px" />}
-                <p>Photos</p>
-            </li>
-            <li className={getClasses(1)} onClick={() => onClick(1)}>
-                {active === 1 ? <Grid height="17px" /> : <GridOutline height="17px" />}
-                <p>Groups</p>
-            </li>
+            <Link to="/">
+                <li className={getClasses(0)} onClick={() => onClick(0)}>
+                    {active === 0 ? <Home height="17px" /> : <HomeOutline height="17px" />}
+                    <p>Photos</p>
+                </li>
+            </Link>
+            <Link to="/groups">
+                <li className={getClasses(1)} onClick={() => onClick(1)}>
+                    {active === 1 ? <Grid height="17px" /> : <GridOutline height="17px" />}
+                    <p>Groups</p>
+                </li>
+            </Link>
             <li className={getClasses(2)} onClick={() => onClick(2)}>
                 {active === 2 ? <Pricetag height="17px" /> : <PricetagOutline height="17px" />}
                 <p>Tags</p>
