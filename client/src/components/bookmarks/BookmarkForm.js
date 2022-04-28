@@ -3,6 +3,7 @@ import { darkIcons, icons } from '../../utils/icons';
 import { Close } from 'react-ionicons'
 import { connect } from 'react-redux'
 import { updateBookmark, saveBookmark } from 'actions/bookmarks'
+import Input from '../elements/Input';
 
 const BookmarkForm = ({ closeForm, editData, showForm, updateBookmark, saveBookmark }) => {
 
@@ -51,23 +52,14 @@ const BookmarkForm = ({ closeForm, editData, showForm, updateBookmark, saveBookm
 
     return (
         <>
-            <div className='bookmarks__form'>
-                <Close className='bookmarks__form-close' onClick={closeForm} />
-                <div className="bookmarks__form-input-container">
-                    <input
-                        ref={input}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className='bookmarks__form-input'
-                        type='text'
-                        placeholder='Bookmark name'
-                    />
-                </div>
-                <button onClick={onSubmit} className="bookmarks__form-button">Save</button>
+            <div className='modal-form'>
+                <Close className='modal-form__close' onClick={closeForm} />
+                <Input className='modal-form__input modal-form__input--bookmarks' ref={input} value={name} setValue={setName} placeholder="Bookmark name" />
+                <button onClick={onSubmit} className="modal-form__button">Save</button>
 
             </div>
 
-            <div className="bookmarks__form-icons">
+            <div className="modal-form__icons">
                 {
                     icons.map((item, i) => (
                         <div key={i} onClick={() => setIcon(item.name)}>

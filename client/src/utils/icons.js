@@ -33,7 +33,6 @@ export const darkIcons = {
     book: <Book height={iconSize} />,
     beer: <Beer height={iconSize} />,
     cafe: <Cafe height={iconSize} />,
-    camera: <Camera height={iconSize} />,
     cart: <Cart height={iconSize} />,
     clipboard: <Clipboard height={iconSize} />,
     cloud: <Cloud height={iconSize}/>,
@@ -58,6 +57,7 @@ export const icons = [
     { name: 'flask', darkIcon: <Flask color={iconDark} />,greyIcon: <Flask color={iconGrey} />, primaryIcon: <Flask color={iconPrimary} /> },
     { name: 'heart', darkIcon: <Heart color={iconDark} />,greyIcon: <Heart color={iconGrey} />, primaryIcon: <Heart color={iconPrimary} /> },
     { name: 'map', darkIcon: <Map color={iconDark} />,greyIcon: <Map color={iconGrey} />, primaryIcon: <Map color={iconPrimary} /> },
-    { name: 'paw', darkIcon: <Paw color={iconDark} />,greyIcon: <Paw color={iconGrey} />, primaryIcon: <Paw color={iconPrimary} /> }
+    { name: 'paw', darkIcon: <Paw color={iconDark} />,greyIcon: <Paw color={iconGrey} />, primaryIcon: <Paw color={iconPrimary} /> },
+    { name: 'school', darkIcon: <School color={iconDark} />,greyIcon: <School color={iconGrey} />, primaryIcon: <School color={iconPrimary} /> },
 ]
 

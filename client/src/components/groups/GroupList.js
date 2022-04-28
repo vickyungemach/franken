@@ -1,7 +1,7 @@
 import React from 'react';
 import GroupListItem from './GroupListItem';
 
-const GroupList = ({ }) => {
+const GroupList = () => {
 
     return (
         <div className="group__list">

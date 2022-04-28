@@ -24,6 +24,8 @@ export const UPDATE_BOOKMARK = 'UPDATE_BOOKMARK';
 export const SORT_BOOKMARKS = 'SORT_BOOKMARKS';
 export const SET_ACTIVE_BOOKMARK = 'SET_ACTIVE_BOOKMARK';
 
+// Groups
+export const TOGGLE_SHARED = 'TOGGLE_SHARED';
 
 
 

@@ -1,5 +1,4 @@
 .group {
-
     // Header
     &__header {
         display: flex;
@@ -78,6 +77,66 @@
                 font-size: 1.3rem;
                 color: #aeaeae
             }
+        }
+    }
+
+    // Create group
+    &__create {
+        min-height: 50rem;
+        position: relative;
+
+        &-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: #EFEFEF;
+            font-size: 12px;
+            padding: 1rem;
+            margin: 2rem auto;
+            margin-bottom: 3rem;
+            cursor: pointer;
+        }
+
+        &-members {
+            ul {
+                position: absolute;
+                top: 50%;
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: 2rem;
+                width: 90%;
+
+                li {
+                    width: 50%;
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    
+                    span {
+                        opacity: 0;
+                        pointer-events: none;
+                        margin-left: 5px;
+                        transition: 0.2s ease-in-out 0s;
+                        cursor: pointer;
+                    }
+
+                    &:hover span {
+                        opacity: 1;
+                        pointer-events: auto;
+                    }
+                }
+            }
+        }
+
+        &-submit {
+            position: absolute;
+            margin-top: auto;
+            width: 100%;
+            bottom: 2rem;
         }
     }
 

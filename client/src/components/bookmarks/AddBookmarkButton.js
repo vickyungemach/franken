@@ -11,4 +11,4 @@ const AddBookmarkButton = ({ onClick }) => {
     )
 }
 
-export default AddBookmarkButton ;
+export default AddBookmarkButton;

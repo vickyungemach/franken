@@ -1,8 +1,8 @@
 import React from 'react';
 import { CloseOutline, CreateOutline } from 'react-ionicons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import AddButton from '../common/modelForm/AddButton';
 import BookmarkForm from './BookmarkForm';
-import AddBookmarkButton from './AddBookmarkButton';
 import ManageBookmarksItem from './ManageBookmarksItem';
 
 const ManageBookmarks = ({ setActive, activeBookmark, bookmarks, closeBookmarksModal, showForm, showEdits, setShowForm, setShowEdits, editBookmark, setEditBookmark, sortBookmarks }) => {
@@ -103,7 +103,7 @@ const ManageBookmarks = ({ setActive, activeBookmark, bookmarks, closeBookmarksM
                 </Droppable>
             </DragDropContext>
 
-            {editBookmark !== null ? null : showForm ? <BookmarkForm showForm={showForm} closeForm={closeForm} /> : <AddBookmarkButton onClick={openForm} />}
+            {editBookmark !== null ? null : showForm ? <BookmarkForm showForm={showForm} closeForm={closeForm} /> : <AddButton title="Add bookmark" onClick={openForm} />}
 
             {
                 !showForm && editBookmark === null && (
