@@ -27,7 +27,7 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
     }
 
     useEffect(() => {
-        getBookmarks(); 
+        getBookmarks();
         !loadingBookmarks && getImages(bookmarks[0]._id)
     }, [loadingBookmarks]) /* eslint-disable-line */
 
@@ -40,19 +40,21 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
     return (
         <Container>
             <HomeHeader
-                openManageBookmarks={() => setManageBookmarks(true)} active={activeBookmark} setActive={setActive} bookmarks={bookmarks} />
-            { loadingImages ? <Spinner /> : <Grid images={images} /> }
+                openManageBookmarks={() => setManageBookmarks(true)} active={activeBookmark} setActive={setActive} bookmarks={bookmarks} 
+            />
+                
+                {loadingImages ? <Spinner /> : <Grid images={images} /> }
 
-            <Modal 
-                modal={manageBookmarks} 
-                setModal={setManageBookmarks} 
+            <Modal
+                modal={manageBookmarks}
+                setModal={setManageBookmarks}
                 reset={resetManageBookmarks}
                 title="Bookmarks"
                 width="30%"
             >
-                <ManageBookmarks 
+                <ManageBookmarks
                     bookmarks={bookmarks}
-                    closeBookmarksModal={() => setManageBookmarks(false)} 
+                    closeBookmarksModal={() => setManageBookmarks(false)}
                     showForm={showForm}
                     setShowForm={setShowForm}
                     showEdits={showEdits}

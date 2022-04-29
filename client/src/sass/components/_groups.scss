@@ -85,6 +85,7 @@
         min-height: 50rem;
         position: relative;
 
+        // Upload group image
         &-image {
             display: flex;
             align-items: center;
@@ -101,6 +102,7 @@
             cursor: pointer;
         }
 
+        // List of selected members
         &-members {
             ul {
                 position: absolute;
@@ -132,6 +134,7 @@
             }
         }
 
+        // Bottom submit button
         &-submit {
             position: absolute;
             margin-top: auto;

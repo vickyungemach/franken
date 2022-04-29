@@ -3,7 +3,7 @@ import React from 'react';
 /* ===================================
    Dropdown
 =================================== */
-export const Dropdown = ( { children, hideOnMobile, dropdown, setDropdown, className, distance }) => {
+export const Dropdown = ( { children, hideOnMobile, dropdown, className, distance }) => {
 
     // Get the button and items from children
     const rchildren = React.Children.toArray(children);

@@ -1,12 +1,9 @@
 import React from 'react';
-import { Add, People, Person } from 'react-ionicons'
-import { connect } from 'react-redux'
-import { toggleShared } from 'actions/groups'
+import { Add } from 'react-ionicons'
+import GroupToggle from './GroupToggle';
 
-const GroupHeader = ({ openCreateGroup, shared, toggleShared }) => {
 
-    const privateBtn = <button onClick={toggleShared} className='group__toggle-btn'> <Person height="17px" color="#333" />My Groups</button>;
-    const sharedBtn = <button onClick={toggleShared} className='group__toggle-btn'> <People height="17px" color="#333" />All Groups</button>;
+const GroupHeader = ({ openCreateGroup }) => {
 
     return (
         <div className="group__header">
@@ -14,16 +11,12 @@ const GroupHeader = ({ openCreateGroup, shared, toggleShared }) => {
             <button onClick={openCreateGroup} className="regular-btn flex"> <Add height="17px" color="#fff" />Add Group</button>
             <div className="group__search">
                 <input className='group__search-input' type="text" placeholder='Search groups' />
-                { shared ? sharedBtn : privateBtn }
+                <GroupToggle />
             </div>
         </div>
     )
 }
 
 
-const mapStateToProps = state => ({
-    shared: state.groups.shared
-})
-
-export default connect(mapStateToProps, { toggleShared })(GroupHeader);
+export default GroupHeader;
 

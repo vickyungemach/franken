@@ -14,7 +14,7 @@
             letter-spacing: .8px;
         }
 
-        // Header tab bar
+        // Header tabs
         &-tabs {
             display: flex;
             align-items: center;
@@ -55,6 +55,37 @@
                         }
                     }
                 }
+            }
+        }
+
+        // Header info
+        &-info {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 2rem;
+
+            h1 {
+                font-size: 30px;
+                line-height: 1;
+         
+            }
+
+            p {
+                color: $grey-dark;
+                margin-left: 1.5rem;
+            }
+
+            // Group toggle in info
+            .group__toggle-btn {
+                margin-left: auto;
+            }
+
+            // More actions dots in info
+            .grid__header-dots {
+                top: 10px;
+                margin-left: 3rem;
+                
             }
         }
 
