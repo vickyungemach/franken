@@ -4,12 +4,12 @@ import Container from 'components/layout/Container';
 import Grid from 'components/common/grid/Grid';
 import { connect } from 'react-redux';
 
-const GroupDetail = ({ match, images }) => {
+const GroupDetail = ({ match, images, showAll }) => {
 
 
     return (
         <Container>
-            <GroupDetailHeader />
+            <GroupDetailHeader isPrivate={false} showAll={showAll} />
             <Grid images={images} />
         </Container>
     )
@@ -17,7 +17,8 @@ const GroupDetail = ({ match, images }) => {
 
 
 const mapStateToProps = state => ({
-    images: state.images.images
+    images: state.images.images,
+    showAll: state.groups.showAll
 })
 
 export default connect(mapStateToProps, {  })(GroupDetail);

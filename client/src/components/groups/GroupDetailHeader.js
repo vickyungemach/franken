@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { DropdownButton, DropdownItem, Dropdown } from 'components/elements/Dropdown';
-import { EllipsisHorizontal, Person, People } from 'react-ionicons'
+import { EllipsisHorizontal } from 'react-ionicons'
 import GroupToggle from './GroupToggle';
 
 
-const GroupDetailHeader = ({ }) => {
+const GroupDetailHeader = ({ showAll, isPrivate }) => {
     const [dropdown, setDropdown] = useState(false);
 
     useEffect(() => {
         const unsubscribe = document.addEventListener('click', (e) => {
-            if(e.target.tagName !== 'svg') {
+            if (e.target.tagName !== 'svg') {
                 setDropdown(false);
             }
         })
@@ -27,17 +27,20 @@ const GroupDetailHeader = ({ }) => {
 
             <div className='grid__header-info'>
                 <h1>Munich 2021</h1>
-                <p>30 Members</p>
 
-                <GroupToggle />
+                {!isPrivate && (
+                    <>
+                        <p>30 Members</p>
+                        <GroupToggle className={`${!isPrivate ? 'ml-auto' : ''}`} />
+                    </>
+                )}
 
-
-                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} >
+                <Dropdown distance="50%" className={`grid__header-dots ${!isPrivate ? 'ml-6 top-10' : ''}` } dropdown={dropdown} >
                     <DropdownButton>
                         <button onClick={toggleDropdown}>
                             <EllipsisHorizontal color="#dbdbdb" />
                         </button>
-                        
+
                     </DropdownButton>
                     <DropdownItem>Add Photos</DropdownItem>
                     <DropdownItem>Add Members</DropdownItem>
@@ -49,4 +52,4 @@ const GroupDetailHeader = ({ }) => {
     )
 }
 
-export default GroupDetailHeader ;
+export default GroupDetailHeader;

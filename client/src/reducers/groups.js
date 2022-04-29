@@ -1,10 +1,10 @@
 import {
-    TOGGLE_SHARED,
+    TOGGLE_SHOW_ALL,
 } from '../actions/types';
 
 const initialState = {
     loading: true,
-    shared: false
+    showAll: false
 }
 
 export default function groupReducer (state = initialState, action) {
@@ -12,10 +12,10 @@ export default function groupReducer (state = initialState, action) {
 
     switch(type) {
         
-        case TOGGLE_SHARED: 
+        case TOGGLE_SHOW_ALL: 
             return {
                 ...state,
-                shared: !state.shared
+                showAll: !state.showAll
             }
 
         default:

@@ -1,10 +1,10 @@
 import { 
-    TOGGLE_SHARED
+    TOGGLE_SHOW_ALL
 } from './types';
 
-export const toggleShared = () => async dispatch => {
+export const toggleShowAll = () => async dispatch => {
     dispatch({
-        type: TOGGLE_SHARED
+        type: TOGGLE_SHOW_ALL
     })
 }
 
