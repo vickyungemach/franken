@@ -2,10 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { DropdownButton, DropdownItem, Dropdown } from 'components/elements/Dropdown';
 import { EllipsisHorizontal } from 'react-ionicons'
 import GroupToggle from './GroupToggle';
+import Modal from 'components/elements/Modal';
+import LeaveGroup from './LeaveGroup';
 
 
 const GroupDetailHeader = ({ showAll, isPrivate }) => {
     const [dropdown, setDropdown] = useState(false);
+    const [modal, setModal] = useState('');
+
+    const openLeaveGroup = () => {
+        setModal('Leave Group');
+    }
+
 
     useEffect(() => {
         const unsubscribe = document.addEventListener('click', (e) => {
@@ -31,7 +39,7 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                 {!isPrivate && (
                     <>
                         <p>30 Members</p>
-                        <GroupToggle className={`${!isPrivate ? 'ml-auto' : ''}`} />
+                        <GroupToggle resource='Photos' className={`${!isPrivate ? 'ml-auto' : ''}`} />
                     </>
                 )}
 
@@ -44,10 +52,19 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                     </DropdownButton>
                     <DropdownItem>Add Photos</DropdownItem>
                     <DropdownItem>Add Members</DropdownItem>
-                    <DropdownItem>Leave</DropdownItem>
+                    <DropdownItem onClick={openLeaveGroup}>Leave</DropdownItem>
                 </Dropdown>
 
             </div>
+
+            <Modal
+                modal={modal}
+                setModal={setModal}
+                title={modal}
+                width="30%"
+            >
+                <LeaveGroup />
+            </Modal>
         </div>
     )
 }

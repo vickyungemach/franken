@@ -11,7 +11,7 @@ const GroupHeader = ({ openCreateGroup }) => {
             <button onClick={openCreateGroup} className="regular-btn flex"> <Add height="17px" color="#fff" />Add Group</button>
             <div className="group__search">
                 <input className='group__search-input' type="text" placeholder='Search groups' />
-                <GroupToggle />
+                <GroupToggle resource="Groups" />
             </div>
         </div>
     )

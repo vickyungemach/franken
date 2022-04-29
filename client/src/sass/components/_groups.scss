@@ -143,5 +143,39 @@
             bottom: 2rem;
         }
     }
+}
 
+// Modal messages
+.leave-group {
+    display: flex;
+    flex-direction: column;
+    min-height: 30rem;
+    justify-content: space-around;
+    text-align: center;
+    padding: 1rem 2rem;
+
+    &__message {
+        line-height: 30px;
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+
+        & > button {
+            margin-top: 1.5rem;
+        }
+
+        &--light {
+            color: $dark;
+            border-color: $light-grey;
+            background-color: $light-grey;
+            
+        }
+
+        &--danger {
+            color: $danger;
+            border-color: $danger;
+        }  
+    }
 }
