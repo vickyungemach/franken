@@ -10,10 +10,9 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
-    const openLeaveGroup = () => {
-        setModal('Leave Group');
+    const openConfirmation = () => {
+        isPrivate ? setModal('Delete Group') : setModal('Leave Group')
     }
-
 
     useEffect(() => {
         const unsubscribe = document.addEventListener('click', (e) => {
@@ -43,7 +42,7 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                     </>
                 )}
 
-                <Dropdown distance="50%" className={`grid__header-dots ${!isPrivate ? 'ml-6 top-10' : ''}` } dropdown={dropdown} >
+                <Dropdown distance="50%" className={`grid__header-dots ${!isPrivate ? 'ml-6 top-10' : ''}`} dropdown={dropdown} >
                     <DropdownButton>
                         <button onClick={toggleDropdown}>
                             <EllipsisHorizontal color="#dbdbdb" />
@@ -52,7 +51,7 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                     </DropdownButton>
                     <DropdownItem>Add Photos</DropdownItem>
                     <DropdownItem>Add Members</DropdownItem>
-                    <DropdownItem onClick={openLeaveGroup}>Leave</DropdownItem>
+                    <DropdownItem onClick={openConfirmation}>{ isPrivate ? 'Delete' : 'Leave' }</DropdownItem>
                 </Dropdown>
 
             </div>
@@ -63,7 +62,22 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                 title={modal}
                 width="30%"
             >
-                <LeaveGroup />
+                {
+                    isPrivate ? (
+                        <LeaveGroup
+                            message='Do you want to delete the group only, or delete the group and all photos in it?'
+                            buttonLightTitle='Delete group only'
+                            buttonDangerTitle='Delete group and all images'
+                        />
+                    ) : (
+                        <LeaveGroup
+                            message='Do you want to leave and delete the group, or keep it with your images only?'
+                            buttonLightTitle='Keep group'
+                            buttonDangerTitle='Delete group'
+                        />
+                    )
+                }
+
             </Modal>
         </div>
     )
