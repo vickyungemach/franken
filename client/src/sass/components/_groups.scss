@@ -1,4 +1,5 @@
 .group {
+
     // Header
     &__header {
         display: flex;
@@ -28,7 +29,7 @@
             height: 2.57em;
             margin-right: 2rem;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        
+
             &::placeholder {
                 color: #8e8e8e;
                 font-weight: 300;
@@ -48,13 +49,13 @@
             margin-right: 7px;
         }
     }
- 
+
     // Group list
     &__list {
         margin-top: 4rem;
         display: flex;
         flex-wrap: wrap;
-        
+
         // Group list item
         &-item {
             width: 50%;
@@ -118,7 +119,7 @@
                     margin-bottom: 1rem;
                     display: flex;
                     align-items: center;
-                    
+
                     span {
                         opacity: 0;
                         pointer-events: none;
@@ -162,7 +163,7 @@
         display: flex;
         flex-direction: column;
 
-        & > button {
+        &>button {
             margin-top: 1.5rem;
         }
 
@@ -170,12 +171,43 @@
             color: $dark;
             border-color: $light-grey;
             background-color: $light-grey;
-            
+
         }
 
         &--danger {
             color: $danger;
             border-color: $danger;
-        }  
+        }
+    }
+}
+
+/* ===================================
+   Mobile
+==================================== */
+
+@media only screen and (max-width : $mobile) {
+    .group {
+        padding: 30px 25px;
+
+        // Group list
+        &__list-item {
+            width: 100%;
+            padding: 1rem 0;
+
+            &--image {
+                width: 40px;
+                height: 40px;
+            }
+
+        }
+
+        &__search-input {
+            width: auto;
+            flex: 2;
+        }
+
+        &__toggle-btn {
+            margin-left: auto;
+        }
     }
 }

@@ -28,12 +28,41 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
         setDropdown(!dropdown);
     }
 
+    const MoreOptionsDropdown = ({ mobile, isPrivate }) => {
+        const classNames = ['grid__header-dots'];
+        !isPrivate && classNames.push('ml-6');
+        !mobile && classNames.push('top-10');
+
+        const className = classNames.join(' ').trim();
+
+        return (
+            <Dropdown distance="50%" className={className} dropdown={dropdown} >
+                <DropdownButton>
+                    <button onClick={toggleDropdown}>
+                        <EllipsisHorizontal color="#dbdbdb" />
+                    </button>
+
+                </DropdownButton>
+                <DropdownItem>Add Photos</DropdownItem>
+                <DropdownItem>Add Members</DropdownItem>
+                <DropdownItem onClick={openConfirmation}>{isPrivate ? 'Delete' : 'Leave'}</DropdownItem>
+            </Dropdown>
+        )
+    }
+
+
     return (
         <div className='grid__header'>
-            <h1 className='grid__header-title hide-desktop'>All Photos</h1>
+
+            <div className='grid__header-info--mobile'>
+                <h1 className='grid__header-title'>Munich 2021</h1>
+                <MoreOptionsDropdown mobile={true} isPrivate={isPrivate} />
+            </div>
+
 
             <div className='grid__header-info'>
-                <h1>Munich 2021</h1>
+
+                <h1 className="hide-mobile">Munich 2021</h1>
 
                 {!isPrivate && (
                     <>
@@ -42,17 +71,7 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                     </>
                 )}
 
-                <Dropdown distance="50%" className={`grid__header-dots ${!isPrivate ? 'ml-6 top-10' : ''}`} dropdown={dropdown} >
-                    <DropdownButton>
-                        <button onClick={toggleDropdown}>
-                            <EllipsisHorizontal color="#dbdbdb" />
-                        </button>
-
-                    </DropdownButton>
-                    <DropdownItem>Add Photos</DropdownItem>
-                    <DropdownItem>Add Members</DropdownItem>
-                    <DropdownItem onClick={openConfirmation}>{ isPrivate ? 'Delete' : 'Leave' }</DropdownItem>
-                </Dropdown>
+                {window.innerWidth > 480 && <MoreOptionsDropdown mobile={false} isPrivate={isPrivate} />}
 
             </div>
 

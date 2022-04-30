@@ -76,16 +76,9 @@
                 margin-left: 1.5rem;
             }
 
-            // Group toggle in info
-            // .group__toggle-btn {
-            //     margin-left: auto;
-            // }
-
-            // // More actions dots in info
-            // .grid__header-dots {
-            //     top: 10px;
-            //     margin-left: 3rem;
-            // }
+            &--mobile {
+                display: none;
+            }
         }
 
         // More actions dots
@@ -207,11 +200,14 @@
 
 @media only screen and (max-width: $breakpoint-sm) {
     .grid {
+
+        // Header
         &__header {
             padding: 0 2rem;
             padding-top: 2rem;
             border-bottom: none;
 
+            // Header tabs
             &-tabs {
                 margin-top: 2.5rem;
 
@@ -225,6 +221,21 @@
                     &.active {
                         border: none;
                     }
+                }
+            }
+
+            // Header info
+            &-info {
+                margin-top: 1rem;
+                
+                &--mobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                p { 
+                    margin: 0;
                 }
             }
 
