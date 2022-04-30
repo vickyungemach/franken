@@ -7,22 +7,25 @@
     background-color: $secondary;
     color: white;
     font-weight: 600;
-    padding: 1.4rem 3rem;
-    border-radius: 9px;
-    margin-top: 1.5rem;
+    padding: 8px 15px;
+    border-radius: 5px;
     border: 2px solid white;
     cursor: pointer;
-    font-size: 15px;
     text-align: center;
+    letter-spacing: .7px;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
         outline: none;
         border: 2px solid mix(white, $primary, 55%);
     }
 
-    &.w-250 {
-        width: 250px !important;
+    span {
+        position: relative;
+        top: 1px;
+        margin-left: -5px;
     }
+
 }
 
 
@@ -34,7 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 35px;
+    height: 45px;
 
     background-color: transparent;
     border: none;
@@ -50,11 +53,6 @@
     border-radius: 5px;
     line-height: 0;
     cursor: pointer;
-
-    &:not(:last-of-type) {
-        margin-right: 10px;
-    }
-
 
     span {
         position: relative;
@@ -73,7 +71,7 @@
     vertical-align: middle;
     font-size: 1.5rem;
     font-family: Lato;
-                  
+
     p {
         display: inline-block;
         font-size: 2rem;
@@ -115,5 +113,3 @@
     align-items: center;
     justify-content: center;
 }
-
-

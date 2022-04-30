@@ -9,7 +9,7 @@ const Modal = ({ children, modal, setModal, title, width, reset }) => {
 
         if (modalContainer || closeModal) {
             setModal(false)
-            reset();
+            reset && reset();
             document.querySelector('body').classList.remove('no-scroll');
         }
     }

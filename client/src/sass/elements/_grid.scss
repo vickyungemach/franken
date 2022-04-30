@@ -14,7 +14,7 @@
             letter-spacing: .8px;
         }
 
-        // Header tab bar
+        // Header tabs
         &-tabs {
             display: flex;
             align-items: center;
@@ -55,6 +55,29 @@
                         }
                     }
                 }
+            }
+        }
+
+        // Header info
+        &-info {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 2rem;
+
+            h1 {
+                font-size: 30px;
+                line-height: 1;
+         
+            }
+
+            p {
+                color: $grey-dark;
+                margin-left: 1.5rem;
+            }
+
+            &--mobile {
+                display: none;
             }
         }
 
@@ -177,11 +200,14 @@
 
 @media only screen and (max-width: $breakpoint-sm) {
     .grid {
+
+        // Header
         &__header {
             padding: 0 2rem;
             padding-top: 2rem;
             border-bottom: none;
 
+            // Header tabs
             &-tabs {
                 margin-top: 2.5rem;
 
@@ -195,6 +221,21 @@
                     &.active {
                         border: none;
                     }
+                }
+            }
+
+            // Header info
+            &-info {
+                margin-top: 1rem;
+                
+                &--mobile {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                p { 
+                    margin: 0;
                 }
             }
 

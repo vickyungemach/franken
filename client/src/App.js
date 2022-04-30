@@ -11,6 +11,8 @@ import Register from './pages/Register';
 import PrivateRoute from './components/elements/PrivateRoute';
 import { getUser, loginCheck, logout } from 'actions/auth';
 import { store } from './store';
+import Groups from 'pages/Groups';
+import GroupDetail from 'components/groups/GroupDetail';
 
 
 
@@ -28,6 +30,8 @@ function App({ isAuthenticated, token }) {
       <Navbar authenticated={isAuthenticated} username="username" logout={() => store.dispatch(logout())} />
       <Switch>
         <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute exact path='/groups' component={Groups} />
+        <PrivateRoute exact path='/groups/:slug' component={GroupDetail} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
       </Switch>

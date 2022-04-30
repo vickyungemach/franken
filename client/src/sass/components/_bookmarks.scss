@@ -1,5 +1,5 @@
 .bookmarks {
-    padding: 2rem;
+    padding: 2rem 0;
     display: flex;
     min-height: 50rem;
     flex-direction: column;
@@ -68,121 +68,7 @@
             }
         }
     }
-
-    // Manage bookmarks form
-    &__form {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2.5rem;
-
-        // Input
-        &-input-container {
-            -webkit-box-align: center;
-            -webkit-box-pack: justify;
-            align-items: center;
-            background-color: #FAFBFC;
-            border-color: #DFE1E6;
-            color: #091E42;
-            cursor: text;
-            border-radius: 3px;
-            border-width: 1px;
-            border-style: solid;
-            box-sizing: border-box;
-            display: flex;
-            flex: 1 1 100%;
-            font-size: 14px;
-            justify-content: space-between;
-            max-width: 100%;
-            overflow: hidden;
-            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
-            overflow-wrap: break-word;
-            vertical-align: top;
-            pointer-events: auto;
-            margin-left: 2rem;
-            margin-right: .8rem;
-
-            &:hover {
-                background-color: #EBECF0;
-            }
-        }
-
-        &-input {
-            background-color: transparent;
-            border: 0px;
-            box-sizing: border-box;
-            color: inherit;
-            cursor: inherit;
-            font-size: 14px;
-            min-width: 0px;
-            outline: none;
-            width: 100%;
-            line-height: 1.42857;
-            padding: 8px 6px;
-            height: 2.57em;
-        }
-
-        // Icon selection
-        &-icons {
-            width: 85%;
-            margin-top: 2rem;
-            margin-left: 4.5rem;
-            display: flex;
-            flex-wrap: wrap;
-
-            span {
-                margin-bottom: 1.5rem;
-                margin-right: 2.5rem;
-            }
-
-            & > div {
-                cursor: pointer;
-            }
-        }
-
-        // Close bookmark form
-        &-close {
-            cursor: pointer;
-        }
-
-        // Save bookmark button
-        &-button {
-            background-color: $secondary;
-            text-align: center;
-            border-color: $secondary;
-            color: #fff;
-            cursor: text;
-            border-radius: 3px;
-            border-width: 1px;
-            border-style: solid;
-            box-sizing: border-box;
-            min-width: 7rem;
-            font-size: 14px;
-            transition: background-color 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
-            height: 3.8rem;
-        }
-    }
-
-    // Add bookmark button
-    &__add-btn {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        color: grey;
-        font-family: 'Lato';
-        font-weight: 500;
-        font-size: 1.5rem;
-        letter-spacing: .8px;
-        width: 19rem;
-        margin-top: 3rem;
-        margin-bottom: 4rem;
-
-        p {
-            margin-left: 2rem;
-        }
-    }
-
-
+    
     // Manage bookmarks button
     &__btn {
         margin-top: auto;

@@ -3,7 +3,7 @@ import { EllipsisHorizontal } from 'react-ionicons';
 import { darkIcons } from '../../utils/icons';
 import { Dropdown, DropdownItem, DropdownButton } from 'components/elements/Dropdown';
 
-const GridHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
+const HomeHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
     const [dropdown, setDropdown] = useState(false);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const GridHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
                     ))
                 }
 
-                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} setDropdown={setDropdown} >
+                <Dropdown distance="50%" className="grid__header-dots" dropdown={dropdown} >
                     <DropdownButton>
                         <button onClick={toggleDropdown}>
                             <EllipsisHorizontal color="#dbdbdb" />
@@ -54,4 +54,4 @@ const GridHeader = ({ bookmarks, active, setActive, openManageBookmarks }) => {
     )
 }
 
-export default GridHeader;
+export default HomeHeader;
