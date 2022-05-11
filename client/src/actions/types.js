@@ -26,6 +26,12 @@ export const SET_ACTIVE_BOOKMARK = 'SET_ACTIVE_BOOKMARK';
 
 // Groups
 export const TOGGLE_SHOW_ALL = 'TOGGLE_SHOW_ALL';
-
+export const GET_GROUPS = 'GET_GROUPS';
+export const CREATE_GROUP = 'CREATE_GROUP';
+export const DELETE_GROUP = 'DELETE_GROUP';
+export const ADD_MEMBERS = 'ADD_MEMBERS';
+export const SET_ACTIVE_GROUP = 'SET_ACTIVE_GROUP';
+export const GET_ONE_GROUP = 'GET_ONE_GROUP';
+export const CLEAR_GROUP = 'CLEAR_GROUP';
 
 

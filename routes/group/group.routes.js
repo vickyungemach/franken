@@ -12,6 +12,7 @@ router
 
 router 
     .route('/:id')
+    .get(protect, groupCtrl.getOneGroup)
     .delete(protect, groupCtrl.deleteGroup)
 
 router

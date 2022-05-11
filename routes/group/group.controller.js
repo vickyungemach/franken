@@ -13,6 +13,20 @@ async function getAllMyGroups(req, res) {
     }
 }
 
+async function getOneGroup(req, res) {
+    try {
+        const group = await Group.findById(req.params.id);
+
+        if(!group) {
+            return res.status(404).json({ msg: 'Group not found'});
+        }
+
+        res.status(200).json(group)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 async function saveGroup(req, res) {
     try {
         req.body.owner = req.user.id;
@@ -55,6 +69,7 @@ async function deleteGroup(req, res) {
 
 module.exports = {
     getAllMyGroups,
+    getOneGroup,
     saveGroup,
     addMembers,
     deleteGroup

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 
 import GroupHeader from 'components/groups/GroupHeader';
@@ -7,20 +7,25 @@ import Container from 'components/layout/Container';
 import Modal from 'components/elements/Modal';
 import CreateGroup from 'components/groups/CreateGroup';
 
+import { getGroups } from 'actions/groups';
 
-const Groups = ({ closeCreateForm, openCreateForm }) => {
+
+const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
     const [createGroup, setCreateGroup] = useState(false);
     const [addMemberInput, setAddMemberInput] = useState(false);
 
-
     const openCreateGroup = () => setCreateGroup(true);
+
+    useEffect(() => {
+        getGroups();
+    }, [])
 
 
     return (
         <Container>
             <div className="group">
                 <GroupHeader openCreateGroup={openCreateGroup} />
-                <GroupList />
+                <GroupList groups={groups} />
             </div>
 
             <Modal
@@ -36,8 +41,8 @@ const Groups = ({ closeCreateForm, openCreateForm }) => {
 }
 
 const mapStateToProps = state => ({
-
+    groups: state.groups.groups
 })
 
-export default connect(mapStateToProps, { })(Groups);
+export default connect(mapStateToProps, { getGroups })(Groups);
 

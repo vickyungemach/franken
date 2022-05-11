@@ -6,7 +6,7 @@ import Modal from 'components/elements/Modal';
 import LeaveGroup from './LeaveGroup';
 
 
-const GroupDetailHeader = ({ showAll, isPrivate }) => {
+const GroupDetailHeader = ({ showAll, isPrivate, title }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
@@ -55,14 +55,14 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
         <div className='grid__header'>
 
             <div className='grid__header-info--mobile'>
-                <h1 className='grid__header-title'>Munich 2021</h1>
+                <h1 className='grid__header-title'>{ title }</h1>
                 <MoreOptionsDropdown mobile={true} isPrivate={isPrivate} />
             </div>
 
 
             <div className='grid__header-info'>
 
-                <h1 className="hide-mobile">Munich 2021</h1>
+                <h1 className="hide-mobile">{ title }</h1>
 
                 {!isPrivate && (
                     <>
