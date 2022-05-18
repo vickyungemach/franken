@@ -5,7 +5,7 @@ import Grid from 'components/common/grid/Grid';
 import { connect } from 'react-redux';
 import { getOneGroup, clearGroup } from 'actions/groups';
 
-const GroupDetail = ({ match, images, showAll, getOneGroup, group, clearGroup }) => {
+const GroupDetail = ({ match, showAll, getOneGroup, group, clearGroup }) => {
 
     useEffect(() => {
         clearGroup();
@@ -18,7 +18,7 @@ const GroupDetail = ({ match, images, showAll, getOneGroup, group, clearGroup })
                 group && (
                     <>
                         <GroupDetailHeader isPrivate={group.private} showAll={showAll} title={group.title} />
-                        <Grid images={images} />
+                        <Grid images={group.images} />
                     </>
                 )
             }
@@ -28,7 +28,6 @@ const GroupDetail = ({ match, images, showAll, getOneGroup, group, clearGroup })
 
 
 const mapStateToProps = state => ({
-    images: state.images.images,
     showAll: state.groups.showAll,
     group: state.groups.active
 })
