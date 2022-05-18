@@ -6,7 +6,7 @@ import Modal from 'components/elements/Modal';
 import LeaveGroup from './LeaveGroup';
 
 
-const GroupDetailHeader = ({ showAll, isPrivate, title }) => {
+const GroupDetailHeader = ({ showAllImages, isPrivate, title }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
@@ -67,7 +67,7 @@ const GroupDetailHeader = ({ showAll, isPrivate, title }) => {
                 {!isPrivate && (
                     <>
                         <p>30 Members</p>
-                        <GroupToggle resource='Photos' className={`${!isPrivate ? 'ml-auto' : ''}`} />
+                        <GroupToggle showAll={showAllImages} resource='photo' className={`${!isPrivate ? 'ml-auto' : ''}`} />
                     </>
                 )}
 

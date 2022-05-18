@@ -6,17 +6,14 @@ import { toggleShowAll } from 'actions/groups'
 const GroupToggle = ({ showAll, toggleShowAll, resource, className='' }) => {
 
     const classNames = ['group__toggle-btn', className].join(' ').trim();
+    const buttonName = resource.split('')[0].toUpperCase() + resource.slice(1) + 's';
 
-    const myGroupsBtn = <button onClick={toggleShowAll} className={classNames}> <Person height="17px" color="#333" />My {resource}</button>;
-    const allGroupsBtn = <button onClick={toggleShowAll} className={classNames}> <People height="17px" color="#333" />All {resource}</button>;
+    const myBtn = <button onClick={() => toggleShowAll(resource)} className={classNames}> <Person height="17px" color="#333" />My {buttonName}</button>;
+    const allBtn = <button onClick={() => toggleShowAll(resource)} className={classNames}> <People height="17px" color="#333" />All {buttonName}</button>;
 
-    return showAll ? allGroupsBtn : myGroupsBtn
+    return showAll ? allBtn : myBtn
     
 }
 
-const mapStateToProps = state => ({
-    showAll: state.groups.showAll
-})
-
-export default connect(mapStateToProps, { toggleShowAll })(GroupToggle);
+export default connect(null, { toggleShowAll })(GroupToggle);
 

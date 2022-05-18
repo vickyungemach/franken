@@ -11,7 +11,7 @@ import { getGroups } from 'actions/groups';
 import filteredGroups from '../reselect/groupSelector';
 
 
-const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
+const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGroups }) => {
     const [createGroup, setCreateGroup] = useState(false);
     const [addMemberInput, setAddMemberInput] = useState(false);
 
@@ -25,7 +25,7 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
     return (
         <Container>
             <div className="group">
-                <GroupHeader openCreateGroup={openCreateGroup} />
+                <GroupHeader openCreateGroup={openCreateGroup} showAllGroups={showAllGroups} />
                 <GroupList groups={groups} />
             </div>
 
@@ -42,7 +42,8 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
 }
 
 const mapStateToProps = state => ({
-    groups: filteredGroups(state)
+    groups: filteredGroups(state),
+    showAllGroups: state.groups.showAllGroups
 })
 
 export default connect(mapStateToProps, { getGroups })(Groups);

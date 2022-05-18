@@ -1,5 +1,6 @@
 import { 
-    TOGGLE_SHOW_ALL,
+    TOGGLE_SHOW_ALL_GROUPS,
+    TOGGLE_SHOW_ALL_IMAGES,
     GET_GROUPS,
     CREATE_GROUP,
     DELETE_GROUP,
@@ -11,10 +12,18 @@ import {
 
 import api from '../utils/api';
 
-export const toggleShowAll = () => async dispatch => {
-    dispatch({
-        type: TOGGLE_SHOW_ALL
-    })
+export const toggleShowAll = (resource) => async dispatch => {
+    if(resource === 'group') {
+        dispatch({
+            type: TOGGLE_SHOW_ALL_GROUPS
+        })
+    } else if (resource === 'photo') {
+        dispatch({
+            type: TOGGLE_SHOW_ALL_IMAGES
+        })
+    }
+    
+
 }
 
 /* ===================================

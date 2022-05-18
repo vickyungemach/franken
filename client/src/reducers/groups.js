@@ -1,5 +1,6 @@
 import {
-    TOGGLE_SHOW_ALL,
+    TOGGLE_SHOW_ALL_GROUPS,
+    TOGGLE_SHOW_ALL_IMAGES,
     GET_GROUPS,
     CREATE_GROUP,
     DELETE_GROUP,
@@ -12,7 +13,8 @@ import {
 const initialState = {
     groups: [],
     active: null,
-    showAll: false,
+    showAllGroups: true,
+    showAllImages: true,
     loading: true,
 }
 
@@ -21,10 +23,16 @@ export default function groupReducer(state = initialState, action) {
 
     switch (type) {
 
-        case TOGGLE_SHOW_ALL:
+        case TOGGLE_SHOW_ALL_GROUPS:
             return {
                 ...state,
-                showAll: !state.showAll
+                showAllGroups: !state.showAllGroups
+            }
+
+        case TOGGLE_SHOW_ALL_IMAGES:
+            return {
+                ...state,
+                showAllImages: !state.showAllImages
             }
 
         case GET_GROUPS:
