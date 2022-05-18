@@ -8,6 +8,7 @@ import Modal from 'components/elements/Modal';
 import CreateGroup from 'components/groups/CreateGroup';
 
 import { getGroups } from 'actions/groups';
+import filteredGroups from '../reselect/groupSelector';
 
 
 const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
@@ -41,7 +42,7 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups }) => {
 }
 
 const mapStateToProps = state => ({
-    groups: state.groups.groups
+    groups: filteredGroups(state)
 })
 
 export default connect(mapStateToProps, { getGroups })(Groups);
