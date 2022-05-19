@@ -3,12 +3,26 @@ const Group = require('./group.model');
 async function getAllMyGroups(req, res) {
     try {
         const groups = await Group.find( { $or: [ { owner: req.user.id }, { members: { $in: req.user.id } } ] } )
-            // .populate('images')
+            .populate('images')
             // .populate('members')
         
             res.status(200).json(groups);
     } catch (err) {
         res.status(500);
+        console.log(err)
+    }
+}
+
+async function getOneGroup(req, res) {
+    try {
+        const group = await Group.findById(req.params.id).populate('images');
+
+        if(!group) {
+            return res.status(404).json({ msg: 'Group not found'});
+        }
+
+        res.status(200).json(group)
+    } catch (err) {
         console.log(err)
     }
 }
@@ -55,6 +69,7 @@ async function deleteGroup(req, res) {
 
 module.exports = {
     getAllMyGroups,
+    getOneGroup,
     saveGroup,
     addMembers,
     deleteGroup

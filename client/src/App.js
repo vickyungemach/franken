@@ -31,7 +31,7 @@ function App({ isAuthenticated, token }) {
       <Switch>
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute exact path='/groups' component={Groups} />
-        <PrivateRoute exact path='/groups/:slug' component={GroupDetail} />
+        <PrivateRoute exact path='/groups/:id' component={GroupDetail} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
       </Switch>

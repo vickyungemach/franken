@@ -6,7 +6,7 @@ import Modal from 'components/elements/Modal';
 import LeaveGroup from './LeaveGroup';
 
 
-const GroupDetailHeader = ({ showAll, isPrivate }) => {
+const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
@@ -28,6 +28,12 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
         setDropdown(!dropdown);
     }
 
+    const handleDelete = () => {
+        deleteGroup();
+        setModal(false);
+        window.location.href = window.location.origin + '/groups';
+    }
+ 
     const MoreOptionsDropdown = ({ mobile, isPrivate }) => {
         const classNames = ['grid__header-dots'];
         !isPrivate && classNames.push('ml-6');
@@ -55,19 +61,19 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
         <div className='grid__header'>
 
             <div className='grid__header-info--mobile'>
-                <h1 className='grid__header-title'>Munich 2021</h1>
+                <h1 className='grid__header-title'>{ title }</h1>
                 <MoreOptionsDropdown mobile={true} isPrivate={isPrivate} />
             </div>
 
 
             <div className='grid__header-info'>
 
-                <h1 className="hide-mobile">Munich 2021</h1>
+                <h1 className="hide-mobile">{ title }</h1>
 
                 {!isPrivate && (
                     <>
                         <p>30 Members</p>
-                        <GroupToggle resource='Photos' className={`${!isPrivate ? 'ml-auto' : ''}`} />
+                        <GroupToggle showAll={showAllImages} resource='photo' className={`${!isPrivate ? 'ml-auto' : ''}`} />
                     </>
                 )}
 
@@ -87,6 +93,7 @@ const GroupDetailHeader = ({ showAll, isPrivate }) => {
                             message='Do you want to delete the group only, or delete the group and all photos in it?'
                             buttonLightTitle='Delete group only'
                             buttonDangerTitle='Delete group and all images'
+                            deleteGroup={handleDelete}
                         />
                     ) : (
                         <LeaveGroup

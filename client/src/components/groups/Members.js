@@ -12,7 +12,7 @@ const Members = ({ selected, setSelected }) => {
             <ul>
                 {
                     selected.map(member => (
-                        <li onClick={() => handleRemove(member)} key={member}>{ member } <Close color="grey" /></li>
+                        <li onClick={() => handleRemove(member)} key={member}>{ member.name } <Close color="grey" /></li>
                     ))
                 }
             </ul>

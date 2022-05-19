@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
 
 import GroupHeader from 'components/groups/GroupHeader';
@@ -7,20 +7,28 @@ import Container from 'components/layout/Container';
 import Modal from 'components/elements/Modal';
 import CreateGroup from 'components/groups/CreateGroup';
 
+import { getGroups, saveGroup } from 'actions/groups';
+import { getAllUsers } from 'actions/auth';
+import filteredGroups from '../reselect/groupSelector';
 
-const Groups = ({ closeCreateForm, openCreateForm }) => {
+
+const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGroups, getAllUsers, allUsers, saveGroup }) => {
     const [createGroup, setCreateGroup] = useState(false);
     const [addMemberInput, setAddMemberInput] = useState(false);
 
-
     const openCreateGroup = () => setCreateGroup(true);
+    const closeCreateGroup = () => setCreateGroup(false);
+
+    useEffect(() => {
+        getGroups();
+    }, [])
 
 
     return (
         <Container>
             <div className="group">
-                <GroupHeader openCreateGroup={openCreateGroup} />
-                <GroupList />
+                <GroupHeader openCreateGroup={openCreateGroup} showAllGroups={showAllGroups} />
+                <GroupList groups={groups} />
             </div>
 
             <Modal
@@ -29,15 +37,17 @@ const Groups = ({ closeCreateForm, openCreateForm }) => {
                 title="Create Group"
                 width="30%"
             >
-                <CreateGroup createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
+                <CreateGroup closeModal={closeCreateGroup} saveGroup={saveGroup} getAllUsers={getAllUsers} allUsers={allUsers} createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
             </Modal>
         </Container >
     )
 }
 
 const mapStateToProps = state => ({
-
+    groups: filteredGroups(state),
+    showAllGroups: state.groups.showAllGroups,
+    allUsers: state.auth.allUsers
 })
 
-export default connect(mapStateToProps, { })(Groups);
+export default connect(mapStateToProps, { getGroups, getAllUsers, saveGroup })(Groups);
 

@@ -3,7 +3,7 @@ import { Add } from 'react-ionicons'
 import GroupToggle from './GroupToggle';
 
 
-const GroupHeader = ({ openCreateGroup }) => {
+const GroupHeader = ({ openCreateGroup, showAllGroups }) => {
 
     return (
         <div className="group__header">
@@ -11,7 +11,7 @@ const GroupHeader = ({ openCreateGroup }) => {
             <button onClick={openCreateGroup} className="regular-btn flex"> <Add height="17px" color="#fff" />Add Group</button>
             <div className="group__search">
                 <input className='group__search-input' type="text" placeholder='Search groups' />
-                <GroupToggle resource="Groups" />
+                <GroupToggle showAll={showAllGroups} resource="group" />
             </div>
         </div>
     )
