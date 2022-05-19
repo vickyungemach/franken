@@ -3,9 +3,9 @@ import GroupDetailHeader from './GroupDetailHeader';
 import Container from 'components/layout/Container';
 import Grid from 'components/common/grid/Grid';
 import { connect } from 'react-redux';
-import { getOneGroup, clearGroup } from 'actions/groups';
+import { getOneGroup, clearGroup, deleteGroup } from 'actions/groups';
 
-const GroupDetail = ({ match, showAllImages, getOneGroup, group, clearGroup, images, user }) => {
+const GroupDetail = ({ match, showAllImages, getOneGroup, group, clearGroup, deleteGroup, images, user }) => {
 
     useEffect(() => {
         clearGroup();
@@ -17,7 +17,7 @@ const GroupDetail = ({ match, showAllImages, getOneGroup, group, clearGroup, ima
             {
                 group && (
                     <>
-                        <GroupDetailHeader isPrivate={group.private} showAllImages={showAllImages} title={group.title} />
+                        <GroupDetailHeader isPrivate={group.private} showAllImages={showAllImages} title={group.title} deleteGroup={() => deleteGroup(group._id)} />
                         <Grid images={showAllImages ? group.images : group.images.filter(i => i.user === user)  } />
                     </>
                 )
@@ -33,5 +33,5 @@ const mapStateToProps = state => ({
     user: state.auth.user._id
 })
 
-export default connect(mapStateToProps, { getOneGroup, clearGroup })(GroupDetail);
+export default connect(mapStateToProps, { getOneGroup, clearGroup, deleteGroup })(GroupDetail);
 

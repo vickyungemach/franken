@@ -6,7 +6,7 @@ import Modal from 'components/elements/Modal';
 import LeaveGroup from './LeaveGroup';
 
 
-const GroupDetailHeader = ({ showAllImages, isPrivate, title }) => {
+const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
@@ -28,6 +28,12 @@ const GroupDetailHeader = ({ showAllImages, isPrivate, title }) => {
         setDropdown(!dropdown);
     }
 
+    const handleDelete = () => {
+        deleteGroup();
+        setModal(false);
+        window.location.href = window.location.origin + '/groups';
+    }
+ 
     const MoreOptionsDropdown = ({ mobile, isPrivate }) => {
         const classNames = ['grid__header-dots'];
         !isPrivate && classNames.push('ml-6');
@@ -87,6 +93,7 @@ const GroupDetailHeader = ({ showAllImages, isPrivate, title }) => {
                             message='Do you want to delete the group only, or delete the group and all photos in it?'
                             buttonLightTitle='Delete group only'
                             buttonDangerTitle='Delete group and all images'
+                            deleteGroup={handleDelete}
                         />
                     ) : (
                         <LeaveGroup

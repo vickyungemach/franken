@@ -17,6 +17,7 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGro
     const [addMemberInput, setAddMemberInput] = useState(false);
 
     const openCreateGroup = () => setCreateGroup(true);
+    const closeCreateGroup = () => setCreateGroup(false);
 
     useEffect(() => {
         getGroups();
@@ -36,7 +37,7 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGro
                 title="Create Group"
                 width="30%"
             >
-                <CreateGroup saveGroup={saveGroup} getAllUsers={getAllUsers} allUsers={allUsers} createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
+                <CreateGroup closeModal={closeCreateGroup} saveGroup={saveGroup} getAllUsers={getAllUsers} allUsers={allUsers} createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
             </Modal>
         </Container >
     )

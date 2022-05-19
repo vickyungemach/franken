@@ -4,7 +4,7 @@ import AddButton from 'components/common/modelForm/AddButton';
 import AddMembers from './AddMembers';
 import Members from './Members';
 
-const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup, getAllUsers, allUsers, saveGroup }) => {
+const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup, getAllUsers, allUsers, saveGroup, closeModal }) => {
     const [name, setName] = useState('');
     const [selected, setSelected] = useState([]);
 
@@ -21,7 +21,10 @@ const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup, getAllUse
     const handleSubmit = () => {
         const memberIds = selected.map(member => member._id);
         saveGroup(name, memberIds);
-    }
+        setName('');
+        setSelected([]);
+        closeModal();
+    }   
 
     return (
         <div className='group__create'>
