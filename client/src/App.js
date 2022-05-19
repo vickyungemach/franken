@@ -13,6 +13,7 @@ import { getUser, loginCheck, logout } from 'actions/auth';
 import { store } from './store';
 import Groups from 'pages/Groups';
 import GroupDetail from 'components/groups/GroupDetail';
+import Upload from 'pages/Upload';
 
 
 
@@ -32,6 +33,7 @@ function App({ isAuthenticated, token }) {
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute exact path='/groups' component={Groups} />
         <PrivateRoute exact path='/groups/:id' component={GroupDetail} />
+        <Route exact path='/upload' component={Upload} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
       </Switch>
