@@ -112,10 +112,22 @@ async function deleteUser(req, res) {
     res.status(200).json(user);
 }
 
+/* ===================================
+   Get all users
+=================================== */
+async function getAllUsers (req, res) {
+    try {
+        const users = await User.find({}).select('_id name');
+        res.status(200).json(users);
+    } catch (err) {
+        res.status(500).json({ msg: 'Something didnt work right' });
+    }
+}
 
 module.exports = {
     register,
     login,
     getUser,
-    deleteUser
+    deleteUser,
+    getAllUsers
 }

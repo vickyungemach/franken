@@ -19,6 +19,10 @@ router
     .get(protect, authCtrl.getUser);
 
 router
+    .route('/all')
+    .get(protect, authCtrl.getAllUsers)
+
+router
     .route('/:id')
     .delete(authCtrl.deleteUser)
 
@@ -39,6 +43,9 @@ module.exports = router;
 
     GET @ api/user
         Response { _id, name, bookmarks }
+
+    GET @ api/user/all
+        Response [{ _id, name }]
 
     DELETE @ api/user/:id
         Response { _id, name, bookmarks }

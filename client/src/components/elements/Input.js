@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, value, setValue, placeholder='', className='' }, ref) => {
+const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, value, setValue, data=[], placeholder='', className='' }, ref) => {
 
     const classNames = ['input__container', className, dropdown ? 'input__container--dropdown' : ''].join(' ').trim();
 
@@ -15,7 +15,7 @@ const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, valu
                 placeholder={placeholder}
             />
 
-           { dropdown &&  <InputDropdown selected={selected} setSelected={setSelected} searchPhrase={value} setSearchPhrase={setValue} /> }
+           { dropdown &&  <InputDropdown data={data} selected={selected} setSelected={setSelected} searchPhrase={value} setSearchPhrase={setValue} /> }
         </div>
     )
 })
@@ -24,7 +24,7 @@ const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, valu
 /* ===================================
    Input Dropdown
 =================================== */
-export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSelected }) => {
+export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSelected, data }) => {
     const users = ['anna', 'tom', 'lisa'];
     const [suggestions, setSuggestions] = useState([]);
 
