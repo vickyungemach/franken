@@ -1,8 +1,8 @@
-import { 
+import {
     TOGGLE_SHOW_ALL_GROUPS,
     TOGGLE_SHOW_ALL_IMAGES,
     GET_GROUPS,
-    CREATE_GROUP,
+    SAVE_GROUP,
     DELETE_GROUP,
     ADD_MEMBERS,
     SET_ACTIVE_GROUP,
@@ -13,7 +13,7 @@ import {
 import api from '../utils/api';
 
 export const toggleShowAll = (resource) => async dispatch => {
-    if(resource === 'group') {
+    if (resource === 'group') {
         dispatch({
             type: TOGGLE_SHOW_ALL_GROUPS
         })
@@ -22,7 +22,7 @@ export const toggleShowAll = (resource) => async dispatch => {
             type: TOGGLE_SHOW_ALL_IMAGES
         })
     }
-    
+
 
 }
 
@@ -54,28 +54,21 @@ export const getOneGroup = (id) => async dispatch => {
             payload: res.data
         })
     } catch (err) {
-        
+
     }
 }
 
 /* ===================================
-   Create Group
+   Save Group
 =================================== */
-export const createGroup = ( title, members ) => async dispatch => {
+export const saveGroup = (title, members) => async dispatch => {
     try {
-
-        console.log(members)
-
         const group = await api.post('api/group', { title });
 
-
         const res = await api.put(`api/group/add/${group.data._id}`, { members });
-        
-
-        console.log(res.data)
 
         dispatch({
-            type: CREATE_GROUP,
+            type: SAVE_GROUP,
             payload: res.data
         })
 

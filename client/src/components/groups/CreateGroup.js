@@ -4,7 +4,7 @@ import AddButton from 'components/common/modelForm/AddButton';
 import AddMembers from './AddMembers';
 import Members from './Members';
 
-const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup }) => {
+const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup, getAllUsers, allUsers, saveGroup }) => {
     const [name, setName] = useState('');
     const [selected, setSelected] = useState([]);
 
@@ -14,12 +14,19 @@ const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup }) => {
             setSelected([]);
             setAddMemberInput(false);
         }
+
+        getAllUsers();
     }, [createGroup]) // eslint-disable-line
+
+    const handleSubmit = () => {
+        const memberIds = selected.map(member => member._id);
+        saveGroup(name, memberIds);
+    }
 
     return (
         <div className='group__create'>
-            <div className="group__create-image"> Add cover photo</div>
-            <Input onClick={() => setAddMemberInput(false)} value={name} setValue={setName} placeholder="Group name" />
+            <div className="group__create-image">Add cover photo</div>
+            <Input data={allUsers} onClick={() => setAddMemberInput(false)} value={name} setValue={setName} placeholder="Group name" />
             {
 
                 addMemberInput ? <AddMembers selected={selected} setSelected={setSelected} closeAddMemberForm={() => setAddMemberInput(false)} />
@@ -27,8 +34,8 @@ const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup }) => {
             }
             <Members selected={selected} setSelected={setSelected} />
 
-            <div className='group__create-submit regular-btn'>
-                <p>Done</p>
+            <div className='group__create-submit regular-btn' onClick={handleSubmit}>
+                <p>Save Group</p>
             </div>
         </div>
     )

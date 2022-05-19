@@ -8,7 +8,8 @@ import {
     LOGIN_FAIL,
     GET_USER,
     LOGIN_CHECK,
-    LOGOUT_USER
+    LOGOUT_USER,
+    GET_ALL_USERS
 } from './types';
 
 
@@ -118,3 +119,21 @@ export const getUser = () => async dispatch => {
         console.log(err.message);
     }
 }
+
+/* ===================================
+   Get all users
+=================================== */
+
+export const getAllUsers = () => async dispatch => {
+    try {
+        const res = await api.get('/api/user/all');
+
+        dispatch({
+            type: GET_ALL_USERS,
+            payload: res.data
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+

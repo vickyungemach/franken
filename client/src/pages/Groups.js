@@ -7,11 +7,12 @@ import Container from 'components/layout/Container';
 import Modal from 'components/elements/Modal';
 import CreateGroup from 'components/groups/CreateGroup';
 
-import { getGroups } from 'actions/groups';
+import { getGroups, saveGroup } from 'actions/groups';
+import { getAllUsers } from 'actions/auth';
 import filteredGroups from '../reselect/groupSelector';
 
 
-const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGroups }) => {
+const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGroups, getAllUsers, allUsers, saveGroup }) => {
     const [createGroup, setCreateGroup] = useState(false);
     const [addMemberInput, setAddMemberInput] = useState(false);
 
@@ -35,7 +36,7 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGro
                 title="Create Group"
                 width="30%"
             >
-                <CreateGroup createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
+                <CreateGroup saveGroup={saveGroup} getAllUsers={getAllUsers} allUsers={allUsers} createGroup={createGroup} addMemberInput={addMemberInput} setAddMemberInput={setAddMemberInput} />
             </Modal>
         </Container >
     )
@@ -43,8 +44,9 @@ const Groups = ({ closeCreateForm, openCreateForm, getGroups, groups, showAllGro
 
 const mapStateToProps = state => ({
     groups: filteredGroups(state),
-    showAllGroups: state.groups.showAllGroups
+    showAllGroups: state.groups.showAllGroups,
+    allUsers: state.auth.allUsers
 })
 
-export default connect(mapStateToProps, { getGroups })(Groups);
+export default connect(mapStateToProps, { getGroups, getAllUsers, saveGroup })(Groups);
 

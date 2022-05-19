@@ -25,7 +25,7 @@ const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, valu
    Input Dropdown
 =================================== */
 export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSelected, data }) => {
-    const users = ['anna', 'tom', 'lisa'];
+    const users = [{ name: 'anna'}, { name: 'tom'}, {name: 'lisa'}];
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSele
         const result = [];
         const search = searchPhrase.toLowerCase();
         users.forEach(user => {
-            if(user.indexOf(search) > -1 && !selected.includes(user)) {
+            if(user.name.indexOf(search) > -1 && !selected.name?.includes(user.name)) {
                 result.push(user);
             }
         })
@@ -55,7 +55,7 @@ export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSele
             <ul className='input__dropdown-list'>
                 {
                     suggestions.map(user => (
-                        <li onClick={() => onSelect(user)} key={user} className='input__dropdown-item'>{ user }</li>
+                        <li onClick={() => onSelect(user)} key={user} className='input__dropdown-item'>{ user.name }</li>
                     ))
                 }
             </ul>

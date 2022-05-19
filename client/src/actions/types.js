@@ -6,6 +6,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGIN_CHECK = 'LOGIN_CHECK';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const GET_USER = 'GET_USER';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
 
 // Alerts
 export const SET_ERROR = 'SET_ERROR';
@@ -28,7 +29,7 @@ export const SET_ACTIVE_BOOKMARK = 'SET_ACTIVE_BOOKMARK';
 export const TOGGLE_SHOW_ALL_GROUPS = 'TOGGLE_SHOW_ALL_GROUPS';
 export const TOGGLE_SHOW_ALL_IMAGES = 'TOGGLE_SHOW_ALL_IMAGES';
 export const GET_GROUPS = 'GET_GROUPS';
-export const CREATE_GROUP = 'CREATE_GROUP';
+export const SAVE_GROUP = 'SAVE_GROUP';
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const ADD_MEMBERS = 'ADD_MEMBERS';
 export const SET_ACTIVE_GROUP = 'SET_ACTIVE_GROUP';

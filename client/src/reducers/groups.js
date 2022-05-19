@@ -2,7 +2,7 @@ import {
     TOGGLE_SHOW_ALL_GROUPS,
     TOGGLE_SHOW_ALL_IMAGES,
     GET_GROUPS,
-    CREATE_GROUP,
+    SAVE_GROUP,
     DELETE_GROUP,
     ADD_MEMBERS,
     SET_ACTIVE_GROUP,
@@ -42,10 +42,10 @@ export default function groupReducer(state = initialState, action) {
                 loading: false
             }
 
-        case CREATE_GROUP:
+        case SAVE_GROUP:
             return {
                 ...state,
-                groups: payload
+                groups: [...state.groups, payload]
             }
 
         case DELETE_GROUP:

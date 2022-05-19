@@ -5,7 +5,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGIN_CHECK,
-    LOGOUT_USER
+    LOGOUT_USER,
+    GET_ALL_USERS
 } from '../actions/types';
 
 const initialState = {
@@ -13,9 +14,8 @@ const initialState = {
     isAuthenticated: false,
     loading: true,
     loginCheck: false,
-    user: {
-        languages: [{foreign: "", native: ""}]
-    }
+    user: null,
+    allUsers: []
 }
 
 export default function authReducer (state = initialState, action) {
@@ -59,6 +59,12 @@ export default function authReducer (state = initialState, action) {
                 isAuthenticated: true,
                 loading: false,
                 user: payload
+            }
+
+        case GET_ALL_USERS:
+            return {
+                ...state,
+                allUsers: payload
             }
 
         default:
