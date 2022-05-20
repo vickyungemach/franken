@@ -4,9 +4,7 @@ import env from './env';
 const fetch = () => {
     const defaultOptions = {
       baseURL: env.baseUrl,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
     };
   
     // Create instance

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { uploadImage } from 'actions/images'
 
 import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
 
-const Sidebar = () => {
+const Sidebar = ({ uploadImage }) => {
 
     const path = window.location.pathname;
 
@@ -20,6 +22,15 @@ const Sidebar = () => {
 
     const getClasses = (index) => {
         return index === active ? 'sidebar__link sidebar__link--active' : 'sidebar__link';
+    }
+
+    function realFileClick() {
+        const realFileBtn = document.getElementById('real-file');
+        realFileBtn.click();
+    }
+
+    const handleUpload = (e) => {
+        uploadImage(e.target.files[0])
     }
 
 
@@ -42,9 +53,10 @@ const Sidebar = () => {
                 <p>Tags</p>
             </li>
             <li className="sidebar__link">
-                <div className='sidebar__btn btn-round'>
+                <div className='sidebar__btn btn-round' onClick={realFileClick}>
+                    <input type="file" name="" id="real-file" hidden="hidden" onChange={handleUpload} />
                     <Add height="20px" />
-                    <p>Add</p>
+                    <p>Upload</p>
                 </div>
 
             </li>
@@ -52,5 +64,7 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar;
+
+export default connect(null, { uploadImage })(Sidebar);
+
 
