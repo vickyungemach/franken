@@ -6,6 +6,5 @@ config.js
 .env
 env.js
 .expo/
-client/build/
 package-lock.json
 
