@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { uploadImage } from 'actions/images'
+import { uploadImages } from 'actions/images'
 
-const Upload = ({ uploadImage }) => {
+const Upload = ({ uploadImages }) => {
 
     const handleUpload = (e) => {
-        uploadImage(e.target.files[0])
+        uploadImages(e.target.files[0])
     }
 
     return (
@@ -22,4 +22,4 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, { uploadImage })(Upload);
+export default connect(mapStateToProps, { uploadImages })(Upload);

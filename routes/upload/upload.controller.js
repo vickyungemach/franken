@@ -17,6 +17,7 @@ async function uploadImage(req, res) {
     try {
 
         let preSignedUrls = [];
+        let keys = [];
 
         // Get signed url for web upload
         const s3 = new AWS.S3({
@@ -32,13 +33,14 @@ async function uploadImage(req, res) {
                 Key: key,
                 Expires: 60
             }, (err, url) => {
-                preSignedUrls.push({ key, url });
+                preSignedUrls.push(url);
+                keys.push(key)
             })
         }
 
         // Put res on top of callback stack
         setTimeout(() => {
-            res.status(200).json(preSignedUrls)
+            res.status(200).json({ urls: preSignedUrls, keys: keys })
         }, 1)
         
 
