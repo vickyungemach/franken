@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { uploadImage } from 'actions/images'
+import { uploadImages } from 'actions/images'
 
 import { Home, HomeOutline, Grid, GridOutline, Pricetag, Add, PricetagOutline } from 'react-ionicons'
 
-const Sidebar = ({ uploadImage }) => {
+const Sidebar = ({ uploadImages }) => {
 
     const path = window.location.pathname;
 
@@ -13,7 +13,7 @@ const Sidebar = ({ uploadImage }) => {
 
 
     useEffect(() => {
-        if (path === '/' ) {
+      if (path === '/' ) {
             setActive(0);
         } else if(path.includes('groups')) {
             setActive(1)
@@ -30,7 +30,7 @@ const Sidebar = ({ uploadImage }) => {
     }
 
     const handleUpload = (e) => {
-        uploadImage(e.target.files[0])
+        uploadImages(e.target.files)
     }
 
 
@@ -54,7 +54,7 @@ const Sidebar = ({ uploadImage }) => {
             </li>
             <li className="sidebar__link">
                 <div className='sidebar__btn btn-round' onClick={realFileClick}>
-                    <input type="file" name="" id="real-file" hidden="hidden" onChange={handleUpload} />
+                    <input type="file" name="" id="real-file" hidden="hidden" multiple onChange={handleUpload} />
                     <Add height="20px" />
                     <p>Upload</p>
                 </div>
@@ -65,6 +65,6 @@ const Sidebar = ({ uploadImage }) => {
 }
 
 
-export default connect(null, { uploadImage })(Sidebar);
+export default connect(null, { uploadImages })(Sidebar);
 
 

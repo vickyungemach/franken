@@ -18,8 +18,7 @@ module.exports = router;
 
 /* 
     
-    POST @ api/upload/image
-        Payload { }
-        Response { }
+    POST @ api/upload/image?count=
+        Response [{key, url}]
 
 */

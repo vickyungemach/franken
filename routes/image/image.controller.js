@@ -6,14 +6,18 @@ const Bookmark = require('../bookmarks/bookmarks.model');
 =================================== */
 async function saveImage (req, res) {
     try {
-        const reqImage = {
-            url: req.body.url,
-            user: req.user.id
-        }
- 
-        const image = await Image.create(reqImage);
+        const uploadedImages = [];
 
-        res.status(201).json(image);
+        for (let i = 0; i < req.body.length; i++) {
+            const uploaded = await Image.create({ url: req.body[i], user: req.user.id })
+            uploadedImages.push(uploaded);
+            
+        }
+
+        // Put res on top of callback stack
+        setTimeout(() => {
+            res.status(200).json(uploadedImages);
+        }, 1)
     
     } catch (err) {
         console.log(err);

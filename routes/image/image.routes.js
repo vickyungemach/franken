@@ -22,7 +22,7 @@ module.exports = router;
 
 /* 
     POST @ api/
-        Payload { url }
+        Payload [ 'key' ]
         Response { _id, url, user, bookmark }
 
     GET @ api/:id

@@ -3,15 +3,21 @@ const AWS = require('aws-sdk');
 const uuid = require('uuid');
 
 
+const getUrl = (userId) => {
+    const keyPrefix = `${userId}`;
+    const fileName = `${uuid.v4()}.jpg`;
+
+    return `${keyPrefix}/${fileName}`;
+}
+
 /* ===================================
    Upload image
 =================================== */
 async function uploadImage(req, res) {
     try {
-        const keyPrefix = `${req.user.id}`;
-        const fileName = `${uuid.v4()}.jpg`;
 
-        const key = `${keyPrefix}/${fileName}`;
+        let preSignedUrls = [];
+        let keys = [];
 
         // Get signed url for web upload
         const s3 = new AWS.S3({
@@ -19,12 +25,26 @@ async function uploadImage(req, res) {
             secretAccessKey: process.env.SECRETACCESSKEY
         })
 
-        s3.getSignedUrl('putObject', {
-            Bucket: 'minite-bucket',
-            ContentType: 'image/jpeg',
-            Key: key,
-            Expires: 60
-        }, (err, url) => res.send({key, url}))
+        for (let i = 0; i < req.query.count; i++) {
+            const key = getUrl(req.user.id);
+            s3.getSignedUrl('putObject', {
+                Bucket: 'minite-bucket',
+                ContentType: 'image/jpeg',
+                Key: key,
+                Expires: 60
+            }, (err, url) => {
+                preSignedUrls.push(url);
+                keys.push(key)
+            })
+        }
+
+        // Put res on top of callback stack
+        setTimeout(() => {
+            res.status(200).json({ urls: preSignedUrls, keys: keys })
+        }, 1)
+        
+
+
 
     } catch (err) {
         console.log(err);
