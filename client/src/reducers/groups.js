@@ -7,7 +7,8 @@ import {
     ADD_MEMBERS,
     SET_ACTIVE_GROUP,
     GET_ONE_GROUP,
-    CLEAR_GROUP
+    CLEAR_GROUP,
+    UPDATE_GROUP
 } from '../actions/types';
 
 const initialState = {
@@ -71,6 +72,19 @@ export default function groupReducer(state = initialState, action) {
                 ...state,
                 loading: true,
                 active: null
+            }
+
+        case UPDATE_GROUP:
+            return {
+                ...state,
+                loading: false,
+                groups: state.groups.map(group => {
+                    if(group._id === payload._id) {
+                        return payload
+                    } else {
+                        return group
+                    }
+                })
             }
 
         default:

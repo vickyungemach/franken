@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getImages, clearImages } from 'actions/images';
 import { getBookmarks, setActiveBookmark, sortBookmarks } from 'actions/bookmarks';
+import { getGroups } from 'actions/groups';
 
 import Container from 'components/layout/Container';
 import HomeHeader from 'components/home/HomeHeader';
@@ -13,7 +14,7 @@ import ManageBookmarks from 'components/bookmarks/ManageBookmarks';
 
 
 
-const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark, sortBookmarks }) => {
+const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loadingImages, loadingBookmarks, setActiveBookmark, activeBookmark, sortBookmarks, getGroups }) => {
 
     const [manageBookmarks, setManageBookmarks] = useState(false);
     const [showForm, setShowForm] = useState(false);
@@ -27,6 +28,7 @@ const Home = ({ getImages, clearImages, getBookmarks, images, bookmarks, loading
     }
 
     useEffect(() => {
+        getGroups();
         getBookmarks();
         !loadingBookmarks && getImages(bookmarks[0]._id)
     }, [loadingBookmarks]) /* eslint-disable-line */
@@ -79,4 +81,4 @@ const mapStateToProps = state => ({
     activeBookmark: state.bookmarks.activeBookmark
 })
 
-export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark, clearImages, sortBookmarks })(Home);
+export default connect(mapStateToProps, { getImages, getBookmarks, setActiveBookmark, clearImages, sortBookmarks, getGroups })(Home);

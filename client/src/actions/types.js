@@ -15,6 +15,9 @@ export const CLEAR_ERROR = 'CLEAR_ERROR';
 // Images
 export const GET_IMAGES = 'GET_IMAGES';
 export const CLEAR_IMAGES = 'CLEAR_IMAGES';
+export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS'
+export const UPLOAD_IMAGES_FAIL = 'UPLOAD_IMAGES_FAIL'
+
 
 
 // Bookmarks
@@ -35,5 +38,6 @@ export const ADD_MEMBERS = 'ADD_MEMBERS';
 export const SET_ACTIVE_GROUP = 'SET_ACTIVE_GROUP';
 export const GET_ONE_GROUP = 'GET_ONE_GROUP';
 export const CLEAR_GROUP = 'CLEAR_GROUP';
+export const UPDATE_GROUP = 'UPDATE_GROUP'
 
 

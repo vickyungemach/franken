@@ -7,7 +7,8 @@ import {
     ADD_MEMBERS,
     SET_ACTIVE_GROUP,
     GET_ONE_GROUP,
-    CLEAR_GROUP
+    CLEAR_GROUP,
+    UPDATE_GROUP
 } from './types';
 
 import api from '../utils/api';
@@ -82,10 +83,27 @@ export const saveGroup = (title, members) => async dispatch => {
 =================================== */
 export const addMembers = (groupId, members) => async dispatch => {
     try {
-        const res = await api.post('api/group/add/' + groupId, members);
+        const res = await api.put('api/group/add/members/' + groupId, members);
 
         dispatch({
             type: ADD_MEMBERS,
+            payload: res.data
+        })
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+/* ===================================
+   Add Images
+=================================== */
+export const addImages = (groupId, images) => async dispatch => {
+    try {
+        const res = await api.put('api/group/add/images/' + groupId, images);
+
+        dispatch({
+            type: UPDATE_GROUP,
             payload: res.data
         })
 
