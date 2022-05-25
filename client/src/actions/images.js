@@ -1,10 +1,12 @@
 import {
     GET_IMAGES,
-    CLEAR_IMAGES
+    CLEAR_IMAGES,
+    UPLOAD_IMAGES_SUCCESS
 } from './types';
 
 import api from '../utils/api';
 import axios from 'axios';
+import { addImages } from './groups';
 
 
 /* ===================================
@@ -40,7 +42,7 @@ export const clearImages = () => async dispatch => {
 /* ===================================
    Upload images
 =================================== */
-export const uploadImages = (images) => async dispatch => {
+export const uploadImages = (images, group) => async dispatch => {
     try {
         let uploaded = 0;
 
@@ -59,8 +61,20 @@ export const uploadImages = (images) => async dispatch => {
             console.log('done')
         }
         
-
         const res = await api.post('/api/image', resUrls.data.keys )
+
+        dispatch({
+            type: UPLOAD_IMAGES_SUCCESS,
+            payload: res.data
+        })
+
+        if(group) {
+            const imageIds = res.data.map(image => image._id);
+            console.log('ids', imageIds)
+            dispatch(addImages(group._id, {images: imageIds}))
+        }
+
+
     } catch (err) {
         console.log(err);
     }

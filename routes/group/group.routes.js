@@ -16,8 +16,12 @@ router
     .delete(protect, groupCtrl.deleteGroup)
 
 router
-    .route('/add/:id')
+    .route('/add/members/:id')
     .put(protect, groupCtrl.addMembers);
+
+router
+    .route('/add/images/:id')
+    .put(protect, groupCtrl.addImages);
 
 module.exports = router;
 
@@ -30,24 +34,15 @@ module.exports = router;
         Payload { title }
         Response { _id, owner(_id), title, members: [_id], images: [_id], createdAt, updatedAt }
 
-    PUT @ api/group/add/:id
+    PUT @ api/group/add/members/:id
         Payload { members: [_id] }
         Response { _id, owner(_id), title, members: [_id], images: [_id], createdAt, updatedAt }
-
-*/
-
-
-/* 
-    GET @ api/group
-        Response [{ _id, owner, title, members, images, private, createdAt, updatedAt }]
-
-    POST @ api/group
-        Payload { title }
-        Response { _id, owner, title, members, images, private, createdAt, updatedAt }
 
     DELETE @ api/group/:id
         Response { _id, owner, title, members, images, private, createdAt, updatedAt }
 
-    PUT @ api/group/add/:id
-        Response { _id, owner, title, members, images, private, createdAt, updatedAt }
+    PUT @ api/group/add/images/:id
+        Payload { images: [_id] }
+        Response { _id, owner(_id), title, members: [_id], images: [_id], createdAt, updatedAt }
+
 */

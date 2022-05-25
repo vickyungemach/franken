@@ -1,6 +1,7 @@
 import {
     GET_IMAGES,
-    CLEAR_IMAGES
+    CLEAR_IMAGES,
+    UPLOAD_IMAGES_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -25,6 +26,13 @@ export default function imageReducer(state = initialState, action) {
                 ...state,
                 loading: true,
                 images: []
+            }
+
+        case UPLOAD_IMAGES_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                images: [...state.images, ...payload]
             }
 
         default:

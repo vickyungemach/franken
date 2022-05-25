@@ -49,6 +49,16 @@ async function addMembers(req, res) {
     }
 }
 
+async function addImages(req, res) {
+    try {
+        const group = await Group.findByIdAndUpdate(req.params.id, {$push: { images: { $each: req.body.images }}}, { new: true});
+        res.status(201).json(group);
+    } catch (err) {
+        res.status(500);
+        console.log(err);
+    }
+}
+
 async function deleteGroup(req, res) {
     try {
         const group = await Group.findById(req.params.id);
@@ -72,5 +82,6 @@ module.exports = {
     getOneGroup,
     saveGroup,
     addMembers,
+    addImages,
     deleteGroup
 }
