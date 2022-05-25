@@ -84,14 +84,15 @@
         justify-content: center;
         padding-left: 1rem;
         padding-right: 2rem;
+        min-height: 5rem;
 
         &__logo {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             img {
-                height: 4rem;
+                height: 3rem;
                 margin-right: 4px;
             }
         }
@@ -99,6 +100,7 @@
         .nav {
             &--login {
                 justify-content: center;
+                transform: translateY(-4px);
             }
 
             &--logout {

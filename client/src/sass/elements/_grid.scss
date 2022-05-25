@@ -204,12 +204,12 @@
         // Header
         &__header {
             padding: 0 2rem;
-            padding-top: 2rem;
             border-bottom: none;
 
             // Header tabs
             &-tabs {
-                margin-top: 2.5rem;
+                margin-top: 1.6rem;
+                margin-bottom: 5px;
 
                 &>div {
                     margin-right: 15px;
