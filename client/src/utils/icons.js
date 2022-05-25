@@ -21,7 +21,12 @@ const iconGrey = "gainsboro";
 const iconPrimary = "#05B3D7";
 const iconDark = "#333B3F";
 
-const iconSize = "17px";
+let iconSize = "17px";
+if(window.innerWidth < 400) {
+    iconSize = "20px"
+}
+
+
 
 export const darkIcons = {
     camera: <Camera height={iconSize} />,
