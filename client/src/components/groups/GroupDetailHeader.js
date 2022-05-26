@@ -6,7 +6,7 @@ import Modal from 'components/elements/Modal';
 import LeaveGroup from './LeaveGroup';
 
 
-const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup }) => {
+const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup, members }) => {
     const [dropdown, setDropdown] = useState(false);
     const [modal, setModal] = useState('');
 
@@ -72,7 +72,7 @@ const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup }) => 
 
                 {!isPrivate && (
                     <>
-                        <p>30 Members</p>
+                        <p>{members.length} Members</p>
                         <GroupToggle showAll={showAllImages} resource='photo' className={`${!isPrivate ? 'ml-auto' : ''}`} />
                     </>
                 )}
@@ -100,6 +100,7 @@ const GroupDetailHeader = ({ showAllImages, isPrivate, title, deleteGroup }) => 
                             message='Do you want to leave and delete the group, or keep it with your images only?'
                             buttonLightTitle='Keep group'
                             buttonDangerTitle='Delete group'
+                            deleteGroup={handleDelete}
                         />
                     )
                 }

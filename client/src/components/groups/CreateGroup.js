@@ -8,6 +8,8 @@ const CreateGroup = ({ addMemberInput, setAddMemberInput, createGroup, getAllUse
     const [name, setName] = useState('');
     const [selected, setSelected] = useState([]);
 
+    console.log(selected);
+
     useEffect(() => {
         if (createGroup) {
             setName('');

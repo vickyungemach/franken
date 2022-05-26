@@ -71,7 +71,6 @@ export const uploadImages = (images, group) => async dispatch => {
 
         if(group) {
             const imageIds = res.data.map(image => image._id);
-            console.log('ids', imageIds)
             dispatch(addImages(group._id, {images: imageIds}))
         }
 
