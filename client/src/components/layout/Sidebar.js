@@ -83,6 +83,7 @@ const Sidebar = ({ uploadImages, groups }) => {
                 </li>
             </ul>
 
+            {/* Upload Modal */}
             <Modal
                 modal={uploadModal}
                 setModal={setUploadModal}

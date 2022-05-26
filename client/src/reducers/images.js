@@ -2,12 +2,17 @@ import {
     GET_IMAGES,
     CLEAR_IMAGES,
     UPLOAD_IMAGES_SUCCESS,
-    DELETE_IMAGES
+    DELETE_IMAGES,
+    UPDATE_PROGRESS
 } from '../actions/types';
 
 const initialState = {
     loading: true,
-    images: []
+    images: [],
+    progress: {
+        number: null,
+        total: null
+    }
 }
 
 export default function imageReducer(state = initialState, action) {
@@ -41,6 +46,16 @@ export default function imageReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 images: state.images.filter(image => !payload.includes(image._id))
+            }
+
+        case UPDATE_PROGRESS: 
+            return {
+                ...state,
+                loading: false,
+                progress: {
+                    number: payload.number,
+                    total: payload.total
+                }
             }
 
         default:

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './main.scss';
@@ -14,17 +14,26 @@ import { store } from './store';
 import Groups from 'pages/Groups';
 import GroupDetail from 'components/groups/GroupDetail';
 import Upload from 'pages/Upload';
+import Modal from 'components/elements/Modal';
 
 
 
-function App({ isAuthenticated, token }) {
+function App({ isAuthenticated, token, progress }) {
+  
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     store.dispatch(getUser());
     store.dispatch(loginCheck());
   }, [token])
 
-
+  useEffect(() => {
+    if(progress.number) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }
+  }, [progress])
 
   return (
     <Router>
@@ -37,13 +46,22 @@ function App({ isAuthenticated, token }) {
         <Route exact path='/login' component={Login} />
         <Route exact path='/register' component={Register} />
       </Switch>
+      <Modal
+        modal={modal}
+        setModal={setModal}
+        title="Uploading images..."
+        width="30%"
+      >
+        uploading { progress.number } of { progress.total }
+      </Modal>
     </Router>
   );
 }
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  token: state.auth.token
+  token: state.auth.token,
+  progress: state.images.progress
 })
 
 export default connect(mapStateToProps, {})(App);

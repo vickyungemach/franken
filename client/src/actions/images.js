@@ -2,7 +2,8 @@ import {
     GET_IMAGES,
     CLEAR_IMAGES,
     UPLOAD_IMAGES_SUCCESS,
-    DELETE_IMAGES
+    DELETE_IMAGES,
+    UPDATE_PROGRESS
 } from './types';
 
 import api from '../utils/api';
@@ -55,11 +56,18 @@ export const uploadImages = (images, group) => async dispatch => {
             const image = await axios.put(resUrls.data.urls[i], images[i], { headers: { 'Content-Type': 'image/jpeg' }}) 
             uploaded++;
             console.log('uploading: ', uploaded);
+            dispatch({
+                type: UPDATE_PROGRESS,
+                payload: { number: uploaded, total: images.length }
+            })
         }
 
         // upload completed
         if(uploaded === images.length) {
-            console.log('done')
+            dispatch({
+                type: UPDATE_PROGRESS,
+                payload: { number: null, total: null }
+            })
         }
         
         const res = await api.post('/api/image', resUrls.data.keys )
