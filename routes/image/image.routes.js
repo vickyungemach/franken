@@ -9,6 +9,7 @@ const imageCtrl = require('./image.controller');
 router
     .route('/')
     .post(protect, imageCtrl.saveImage)
+    .delete(protect, imageCtrl.deleteImages)
 
 router
     .route('/:id')
@@ -24,6 +25,10 @@ module.exports = router;
     POST @ api/
         Payload [ 'key' ]
         Response { _id, url, user, bookmark }
+
+    DELETE @ api/
+        Payload [ '_id' ]
+        Response [ '_id' ]
 
     GET @ api/:id
         Response [{ _id, url, user, bookmark }]

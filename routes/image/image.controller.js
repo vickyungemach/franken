@@ -71,9 +71,32 @@ async function updateImage (req, res) {
     }
 }
 
+/* ===================================
+   Delete images
+=================================== */
+async function deleteImages (req, res) {
+    try {
+        const deletedImages = [];
+
+        for(let i = 0; i < req.body.length; i++) {
+            const deletedImage = await Image.findByIdAndDelete(req.body[i]);
+            deletedImages.push(deletedImage._id);
+        }
+
+        setTimeout(() => {
+            res.status(200).json(deletedImages)
+        }, 1)
+        
+    } catch (err) {
+        console.log(err);
+        res.status(500)
+    }
+}
+
 
 module.exports = {
     saveImage,
     getImages,
-    updateImage
+    updateImage,
+    deleteImages
 }
