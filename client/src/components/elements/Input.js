@@ -25,7 +25,7 @@ const Input = React.forwardRef(({ onClick, selected, setSelected, dropdown, valu
    Input Dropdown
 =================================== */
 export const InputDropdown = ({ searchPhrase, setSearchPhrase, selected, setSelected, data }) => {
-    const users = [{ name: 'anna'}, { name: 'tom'}, {name: 'lisa'}];
+    const users = [{ name: 'vicky', _id: '621259f788353f9b409d9cbf'}, { name: 'charlie', _id: '62477747ea4aa080468c989f'}];
     const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {

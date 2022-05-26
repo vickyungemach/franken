@@ -62,11 +62,15 @@ export const getOneGroup = (id) => async dispatch => {
 /* ===================================
    Save Group
 =================================== */
-export const saveGroup = (title, members) => async dispatch => {
+export const saveGroup = (title, members) => async (dispatch, getState) => {
     try {
         const group = await api.post('api/group', { title });
 
-        const res = await api.put(`api/group/add/${group.data._id}`, { members });
+        if(members.length > 0) {
+            members.push(getState().auth.user._id);
+        }
+
+        const res = await api.put(`api/group/add/members/${group.data._id}`, { members });
 
         dispatch({
             type: SAVE_GROUP,

@@ -4,7 +4,7 @@ async function getAllMyGroups(req, res) {
     try {
         const groups = await Group.find( { $or: [ { owner: req.user.id }, { members: { $in: req.user.id } } ] } )
             .populate('images')
-            // .populate('members')
+            .populate('members')
         
             res.status(200).json(groups);
     } catch (err) {
