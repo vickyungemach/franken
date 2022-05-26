@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Home, Grid, Pricetag, Add, HomeOutline, GridOutline, PricetagOutline } from 'react-ionicons';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { uploadImages } from 'actions/images'
+import Modal from 'components/elements/Modal';
 
 /* Props
 ============================================================= */
 // navLinks: [icon: String, text: String]
 
-const BottomNav = () => {
+const BottomNav = ({ uploadImages, groups }) => {
 
     const navLinks = [
         { icon: <HomeOutline height="1.8rem" />, iconActive: <Home height="1.8rem" />, text: 'Photos', link: '/'},
@@ -27,6 +30,17 @@ const BottomNav = () => {
     })
 
     const [active, setActive] = useState(0);
+    const [uploadModal, setUploadModal] = useState(false);
+    const [uploadNumber, setUploadNumber] = useState(0);
+    const [uploadGroup, setUploadGroup] = useState(null);
+    const [uploadFiles, setUploadFiles] = useState(null);
+
+    const resetUploadModal = () => {
+        setUploadModal(false);
+        setUploadNumber(0);
+        setUploadGroup(null);
+        setUploadFiles(null);
+    }
 
     const activateTab = (e, i) => {
         e.preventDefault();
@@ -34,6 +48,24 @@ const BottomNav = () => {
             setActive(i);
             window.location.href = url + navLinks[i].link
         }
+    }
+
+
+    function realFileClick() {
+        const realFileBtn = document.getElementById('real-file');
+        realFileBtn.click();
+    }
+
+
+    const selectFiles = (e) => {
+        setUploadModal(true);
+        setUploadNumber(e.target.files.length);
+        setUploadFiles(e.target.files);
+    }
+
+    const handleUpload = () => {
+        uploadImages(uploadFiles, groups[uploadGroup]);
+        resetUploadModal();
     }
 
     return (
@@ -48,7 +80,15 @@ const BottomNav = () => {
                         onClick={(e) => activateTab(e, i)}
                     >
                         {active === i ? link.iconActive : link.icon}
-                        <span className='bottom-nav-text'>{link.text}</span>
+
+                        { i !== 3 ? <span className='bottom-nav-text'>{link.text}</span> : (
+                            <span className='bottom-nav-text' onClick={realFileClick}>
+                                <input type="file" name="" id="real-file" hidden="hidden" multiple onChange={selectFiles} />
+                                Upload
+                            
+                            </span>
+                        )}
+                        
                     </button>
                 ))
             }
@@ -57,4 +97,9 @@ const BottomNav = () => {
     )
 }
 
-export default BottomNav;
+const mapStateToProps = state => ({
+    groups: state.groups.groups
+})
+
+
+export default connect(mapStateToProps, { uploadImages })(BottomNav);
