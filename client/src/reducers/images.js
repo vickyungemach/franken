@@ -1,7 +1,8 @@
 import {
     GET_IMAGES,
     CLEAR_IMAGES,
-    UPLOAD_IMAGES_SUCCESS
+    UPLOAD_IMAGES_SUCCESS,
+    DELETE_IMAGES
 } from '../actions/types';
 
 const initialState = {
@@ -33,6 +34,13 @@ export default function imageReducer(state = initialState, action) {
                 ...state,
                 loading: false,
                 images: [...state.images, ...payload]
+            }
+
+        case DELETE_IMAGES:
+            return {
+                ...state,
+                loading: false,
+                images: state.images.filter(image => !payload.includes(image._id))
             }
 
         default:

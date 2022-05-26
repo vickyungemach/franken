@@ -1,7 +1,8 @@
 import {
     GET_IMAGES,
     CLEAR_IMAGES,
-    UPLOAD_IMAGES_SUCCESS
+    UPLOAD_IMAGES_SUCCESS,
+    DELETE_IMAGES
 } from './types';
 
 import api from '../utils/api';
@@ -79,3 +80,21 @@ export const uploadImages = (images, group) => async dispatch => {
         console.log(err);
     }
 } 
+
+
+/* ===================================
+   Delete image
+=================================== */
+
+export const deleteImages = (ids) => async dispatch => {
+    try {
+        const res = await api.delete('/api/image', { data: ids });
+
+        dispatch({
+            type: DELETE_IMAGES,
+            payload: res.data
+        })
+    } catch (err) {
+        console.log(err)
+    }
+}
